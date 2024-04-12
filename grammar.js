@@ -71,12 +71,15 @@ module.exports = grammar({
     promise: $ => seq(
       alias($.quoted_string, $.promiser),
       optional(seq('->', alias($.right_value, $.promisee))),
-      repeat($.attribute),
+      optional($.attribute),
+      repeat(seq(',', $.attribute)),
+      optional(','),
       ';'
     ),
 
     attribute: $ => seq(
       alias($.identifier, $.attribute_name),
+      '=>',
       $.right_value
     ),
 

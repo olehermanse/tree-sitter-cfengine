@@ -218,6 +218,10 @@
     "named": false
   },
   {
+    "type": "=>",
+    "named": false
+  },
+  {
     "type": "attribute_name",
     "named": true
   },
