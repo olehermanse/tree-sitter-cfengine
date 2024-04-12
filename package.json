@@ -12,6 +12,14 @@
     "prebuildify": "prebuildify --napi --strip",
     "parse": "tree-sitter parse example-file"
   },
+  "tree-sitter": [
+    {
+      "scope": "source.cfengine",
+      "file-types": [
+        "cf"
+      ]
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "github.com/olehermanse/tree-sitter-cfengine"
