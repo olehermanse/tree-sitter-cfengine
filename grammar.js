@@ -17,12 +17,13 @@ module.exports = grammar({
     ),
 
     bundle: $ => seq(
-      'bundle',
+      bundle_keyword,
       alias($.identifier, $.bundle_type),
       alias($.identifier, $.bundle_id),
       optional($.argument_list),
       $.bundle_body
     ),
+    bundle_keyword: _ => 'bundle',
 
     argument_list: $ => seq(
       '(',
