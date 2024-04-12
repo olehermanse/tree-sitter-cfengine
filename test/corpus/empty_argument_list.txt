@@ -12,6 +12,6 @@ bundle agent my_bundle()
   (bundle_block
     (bundle_keyword)
     (bundle_type)
-    (bundle_id)
-    (argument_list)
+    (bundle_name)
+    (parameter_list)
     (bundle_body)))

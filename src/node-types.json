@@ -1,14 +1,18 @@
 [
   {
-    "type": "argument_list",
+    "type": "attribute",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "argument",
+          "type": "attribute_name",
+          "named": true
+        },
+        {
+          "type": "right_value",
           "named": true
         }
       ]
@@ -23,15 +27,7 @@
       "required": true,
       "types": [
         {
-          "type": "argument_list",
-          "named": true
-        },
-        {
           "type": "bundle_body",
-          "named": true
-        },
-        {
-          "type": "bundle_id",
           "named": true
         },
         {
@@ -39,7 +35,15 @@
           "named": true
         },
         {
+          "type": "bundle_name",
+          "named": true
+        },
+        {
           "type": "bundle_type",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
           "named": true
         }
       ]
@@ -54,14 +58,14 @@
       "required": false,
       "types": [
         {
-          "type": "bundle_statement",
+          "type": "bundle_section",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "bundle_statement",
+    "type": "bundle_section",
     "named": true,
     "fields": {},
     "children": {
@@ -69,18 +73,22 @@
       "required": true,
       "types": [
         {
-          "type": "promise_guard",
+          "type": "class_guarded_promises",
           "named": true
         },
         {
-          "type": "promise_line",
+          "type": "promise",
+          "named": true
+        },
+        {
+          "type": "promise_guard",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "promise_line",
+    "type": "class_guarded_promises",
     "named": true,
     "fields": {},
     "children": {
@@ -89,6 +97,40 @@
       "types": [
         {
           "type": "class_guard",
+          "named": true
+        },
+        {
+          "type": "promise",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "parameter_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "parameter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "promise",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute",
           "named": true
         },
         {
@@ -104,6 +146,25 @@
   },
   {
     "type": "promisee",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "right_value",
     "named": true,
     "fields": {},
     "children": {
@@ -157,15 +218,15 @@
     "named": false
   },
   {
-    "type": "argument",
-    "named": true
-  },
-  {
-    "type": "bundle_id",
+    "type": "attribute_name",
     "named": true
   },
   {
     "type": "bundle_keyword",
+    "named": true
+  },
+  {
+    "type": "bundle_name",
     "named": true
   },
   {
@@ -186,6 +247,10 @@
   },
   {
     "type": "macro",
+    "named": true
+  },
+  {
+    "type": "parameter",
     "named": true
   },
   {

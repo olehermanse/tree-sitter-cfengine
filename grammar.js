@@ -19,22 +19,22 @@ module.exports = grammar({
     bundle_block: $ => seq(
       $.bundle_keyword,
       alias($.identifier, $.bundle_type),
-      alias($.identifier, $.bundle_id),
-      optional($.argument_list),
+      alias($.identifier, $.bundle_name),
+      optional($.parameter_list),
       $.bundle_body
     ),
     bundle_keyword: _ => 'bundle',
 
-    argument_list: $ => seq(
+    parameter_list: $ => seq(
       '(',
       optional(
         seq(
           repeat(
             seq(
-              alias($.identifier, $.argument), ','
+              alias($.identifier, $.parameter), ','
             )
           ),
-          alias($.identifier, $.argument),
+          alias($.identifier, $.parameter),
           optional(',')
         )
       ),
@@ -43,18 +43,16 @@ module.exports = grammar({
 
     bundle_body: $ => seq(
       '{',
-      repeat($.bundle_statement),
+      repeat($.bundle_section),
       '}'
     ),
 
-    bundle_statement: $ => seq(
+    bundle_section: $ => seq(
       $.promise_guard,
-      repeat1(
-        seq(
-          $.promise_line,
-          ';'
-        )
-      )
+      // 0 or more promises without a class guard:
+      repeat($.promise),
+      // 0 or more class guards with 0 or more promises insde:
+      repeat($.class_guarded_promises)
     ),
 
     right_value: $ => choice(
@@ -65,10 +63,21 @@ module.exports = grammar({
       // TODO: function
     ),
 
-    promise_line: $ => seq(
-      optional($.class_guard),
+    class_guarded_promises: $ => prec.right(1, seq(
+      $.class_guard,
+      prec(1, repeat($.promise))
+    )),
+
+    promise: $ => seq(
       alias($.quoted_string, $.promiser),
-      optional(seq('->', alias($.right_value, $.promisee)))
+      optional(seq('->', alias($.right_value, $.promisee))),
+      repeat($.attribute),
+      ';'
+    ),
+
+    attribute: $ => seq(
+      alias($.identifier, $.attribute_name),
+      $.right_value
     ),
 
     quoted_string: $ => /\"((\\(.|\n))|[^"\\])*\"|\'((\\(.|\n))|[^'\\])*\'|`[^`]*`/,
@@ -83,5 +92,4 @@ module.exports = grammar({
 
     macro: $ => token(/@[^\n].*/)
   }
-
 })

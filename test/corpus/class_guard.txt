@@ -15,10 +15,11 @@ bundle agent my_bundle
   (bundle_block
     (bundle_keyword)
     (bundle_type)
-    (bundle_id)
+    (bundle_name)
     (bundle_body
-      (bundle_statement
+      (bundle_section
         (promise_guard)
-        (promise_line
+        (class_guarded_promises
           (class_guard)
-          (promiser))))))
+          (promise
+            (promiser)))))))

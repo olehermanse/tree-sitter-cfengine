@@ -15,12 +15,12 @@ bundle agent their_bundle {}
   (bundle_block
     (bundle_keyword)
     (bundle_type)
-    (bundle_id)
+    (bundle_name)
     (bundle_body))
   (macro)
   (bundle_block
     (bundle_keyword)
     (bundle_type)
-    (bundle_id)
+    (bundle_name)
     (bundle_body))
   (macro))
