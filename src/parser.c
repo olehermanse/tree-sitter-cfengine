@@ -16,7 +16,7 @@
 #define PRODUCTION_ID_COUNT 7
 
 enum ts_symbol_identifiers {
-  anon_sym_bundle = 1,
+  sym_bundle_keyword = 1,
   anon_sym_LPAREN = 2,
   anon_sym_COMMA = 3,
   anon_sym_RPAREN = 4,
@@ -50,7 +50,7 @@ enum ts_symbol_identifiers {
 
 static const char * const ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [anon_sym_bundle] = "bundle",
+  [sym_bundle_keyword] = "bundle_keyword",
   [anon_sym_LPAREN] = "(",
   [anon_sym_COMMA] = ",",
   [anon_sym_RPAREN] = ")",
@@ -84,7 +84,7 @@ static const char * const ts_symbol_names[] = {
 
 static const TSSymbol ts_symbol_map[] = {
   [ts_builtin_sym_end] = ts_builtin_sym_end,
-  [anon_sym_bundle] = anon_sym_bundle,
+  [sym_bundle_keyword] = sym_bundle_keyword,
   [anon_sym_LPAREN] = anon_sym_LPAREN,
   [anon_sym_COMMA] = anon_sym_COMMA,
   [anon_sym_RPAREN] = anon_sym_RPAREN,
@@ -121,9 +121,9 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [anon_sym_bundle] = {
+  [sym_bundle_keyword] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [anon_sym_LPAREN] = {
     .visible = true,
@@ -469,7 +469,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
     case 21:
-      ACCEPT_TOKEN(anon_sym_bundle);
+      ACCEPT_TOKEN(sym_bundle_keyword);
       END_STATE();
     case 22:
       ACCEPT_TOKEN(anon_sym_LPAREN);
@@ -579,7 +579,7 @@ static const TSLexMode ts_lex_modes[STATE_COUNT] = {
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [0] = {
     [ts_builtin_sym_end] = ACTIONS(1),
-    [anon_sym_bundle] = ACTIONS(1),
+    [sym_bundle_keyword] = ACTIONS(1),
     [anon_sym_LPAREN] = ACTIONS(1),
     [anon_sym_COMMA] = ACTIONS(1),
     [anon_sym_RPAREN] = ACTIONS(1),
@@ -597,7 +597,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_bundle] = STATE(4),
     [aux_sym_source_file_repeat1] = STATE(4),
     [ts_builtin_sym_end] = ACTIONS(5),
-    [anon_sym_bundle] = ACTIONS(7),
+    [sym_bundle_keyword] = ACTIONS(7),
     [sym_comment] = ACTIONS(3),
     [sym_macro] = ACTIONS(3),
   },
@@ -638,7 +638,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_macro,
   [46] = 4,
     ACTIONS(7), 1,
-      anon_sym_bundle,
+      sym_bundle_keyword,
     ACTIONS(27), 1,
       ts_builtin_sym_end,
     ACTIONS(3), 2,
@@ -652,7 +652,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(29), 1,
       ts_builtin_sym_end,
     ACTIONS(31), 1,
-      anon_sym_bundle,
+      sym_bundle_keyword,
     ACTIONS(3), 2,
       sym_comment,
       sym_macro,
@@ -777,14 +777,14 @@ static const uint16_t ts_small_parse_table[] = {
       sym_macro,
     ACTIONS(63), 2,
       ts_builtin_sym_end,
-      anon_sym_bundle,
+      sym_bundle_keyword,
   [239] = 2,
     ACTIONS(3), 2,
       sym_comment,
       sym_macro,
     ACTIONS(65), 2,
       ts_builtin_sym_end,
-      anon_sym_bundle,
+      sym_bundle_keyword,
   [248] = 3,
     ACTIONS(57), 1,
       sym_identifier,
@@ -839,7 +839,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_macro,
     ACTIONS(84), 2,
       ts_builtin_sym_end,
-      anon_sym_bundle,
+      sym_bundle_keyword,
   [323] = 3,
     ACTIONS(86), 1,
       sym_identifier,
@@ -854,7 +854,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_macro,
     ACTIONS(88), 2,
       ts_builtin_sym_end,
-      anon_sym_bundle,
+      sym_bundle_keyword,
   [343] = 2,
     ACTIONS(90), 1,
       sym_identifier,

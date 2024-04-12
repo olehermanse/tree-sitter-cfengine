@@ -21,8 +21,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "bundle"
+          "type": "SYMBOL",
+          "name": "bundle_keyword"
         },
         {
           "type": "ALIAS",
@@ -59,6 +59,10 @@
           "name": "bundle_body"
         }
       ]
+    },
+    "bundle_keyword": {
+      "type": "STRING",
+      "value": "bundle"
     },
     "argument_list": {
       "type": "SEQ",

@@ -35,6 +35,10 @@
           "named": true
         },
         {
+          "type": "bundle_keyword",
+          "named": true
+        },
+        {
           "type": "bundle_type",
           "named": true
         }
@@ -157,11 +161,11 @@
     "named": true
   },
   {
-    "type": "bundle",
-    "named": false
+    "type": "bundle_id",
+    "named": true
   },
   {
-    "type": "bundle_id",
+    "type": "bundle_keyword",
     "named": true
   },
   {
