@@ -2,7 +2,8 @@
 Promise line
 ==================
 
-bundle agent my_bundle {
+bundle agent my_bundle
+{
   reports:
       "Hello World!";
 }

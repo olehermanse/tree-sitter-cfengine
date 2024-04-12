@@ -2,7 +2,8 @@
 Empty argument list
 ==================
 
-bundle agent my_bundle() {
+bundle agent my_bundle()
+{
 }
 
 ---
