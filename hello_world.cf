@@ -2,7 +2,8 @@ bundle agent main
 {
   vars:
     "foo"
-      string => "bar";
+      string => "bar",
+      if => "any";
 
   reports:
     "Hello, world!";

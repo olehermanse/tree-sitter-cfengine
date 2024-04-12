@@ -2,12 +2,15 @@
 Class guards
 ==================
 
-bundle agent my_bundle
+bundle agent main
 {
   vars:
     "foo"
       string => "bar",
       if => "any";
+
+  reports:
+    "Hello, world!";
 }
 
 ---
@@ -29,4 +32,8 @@ bundle agent my_bundle
           (attribute
             (attribute_name)
             (right_value
-              (quoted_string))))))))
+              (quoted_string)))))
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser))))))
