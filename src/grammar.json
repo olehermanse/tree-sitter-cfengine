@@ -13,11 +13,11 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "bundle"
+          "name": "bundle_block"
         }
       ]
     },
-    "bundle": {
+    "bundle_block": {
       "type": "SEQ",
       "members": [
         {

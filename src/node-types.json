@@ -15,7 +15,7 @@
     }
   },
   {
-    "type": "bundle",
+    "type": "bundle_block",
     "named": true,
     "fields": {},
     "children": {
@@ -130,7 +130,7 @@
       "required": false,
       "types": [
         {
-          "type": "bundle",
+          "type": "bundle_block",
           "named": true
         }
       ]

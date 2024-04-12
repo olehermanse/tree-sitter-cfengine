@@ -11,12 +11,12 @@ module.exports = grammar({
     source_file: $ => repeat($._block),
 
     _block: $ => choice(
-      $.bundle
+      $.bundle_block
       // TODO: body
       // TODO: promise
     ),
 
-    bundle: $ => seq(
+    bundle_block: $ => seq(
       $.bundle_keyword,
       alias($.identifier, $.bundle_type),
       alias($.identifier, $.bundle_id),

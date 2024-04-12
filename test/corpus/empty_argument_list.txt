@@ -9,7 +9,7 @@ bundle agent my_bundle()
 ---
 
 (source_file
-  (bundle
+  (bundle_block
     (bundle_keyword)
     (bundle_type)
     (bundle_id)
