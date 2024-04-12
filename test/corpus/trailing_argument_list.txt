@@ -9,6 +9,7 @@ bundle agent my_bundle(one, two, three,) {
 
 (source_file
   (bundle
+    (bundle_keyword)
     (bundle_type)
     (bundle_id)
     (argument_list

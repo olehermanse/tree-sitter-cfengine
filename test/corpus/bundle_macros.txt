@@ -13,11 +13,13 @@ bundle agent their_bundle {}
 (source_file
   (macro)
   (bundle
+    (bundle_keyword)
     (bundle_type)
     (bundle_id)
     (bundle_body))
   (macro)
   (bundle
+    (bundle_keyword)
     (bundle_type)
     (bundle_id)
     (bundle_body))

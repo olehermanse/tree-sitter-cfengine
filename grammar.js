@@ -17,7 +17,7 @@ module.exports = grammar({
     ),
 
     bundle: $ => seq(
-      bundle_keyword,
+      $.bundle_keyword,
       alias($.identifier, $.bundle_type),
       alias($.identifier, $.bundle_id),
       optional($.argument_list),
