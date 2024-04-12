@@ -1,0 +1,24 @@
+==================
+Only macros
+==================
+
+@if minimum_version(3.18)
+bundle agent my_bundle {}
+@else
+bundle agent their_bundle {}
+@endif
+
+---
+
+(source_file
+  (macro)
+  (bundle
+    (bundle_type)
+    (bundle_id)
+    (bundle_body))
+  (macro)
+  (bundle
+    (bundle_type)
+    (bundle_id)
+    (bundle_body))
+  (macro))

@@ -1,0 +1,22 @@
+==================
+Identifier as promisee
+==================
+
+bundle agent my_bundle {
+  reports:
+      "promiser" -> promisee;
+}
+
+---
+
+(source_file
+  (bundle
+    (bundle_type)
+    (bundle_id)
+    (bundle_body
+      (bundle_statement
+        (promise_guard)
+        (promise_line
+          (promiser)
+          (promisee
+            (identifier)))))))

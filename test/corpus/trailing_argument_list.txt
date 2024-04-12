@@ -1,0 +1,18 @@
+==================
+Argument list with trailing comma
+==================
+
+bundle agent my_bundle(one, two, three,) {
+}
+
+---
+
+(source_file
+  (bundle
+    (bundle_type)
+    (bundle_id)
+    (argument_list
+      (argument)
+      (argument)
+      (argument))
+    (bundle_body)))

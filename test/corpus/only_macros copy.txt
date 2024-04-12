@@ -1,0 +1,14 @@
+==================
+Only macros
+==================
+
+@if minimum_version(3.18)
+@else
+@endif
+
+---
+
+(source_file
+  (macro)
+  (macro)
+  (macro))

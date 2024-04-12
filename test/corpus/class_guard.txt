@@ -1,0 +1,22 @@
+==================
+Class guard
+==================
+
+bundle agent my_bundle {
+  reports:
+    any::
+      "Hello World!";
+}
+
+---
+
+(source_file
+  (bundle
+    (bundle_type)
+    (bundle_id)
+    (bundle_body
+      (bundle_statement
+        (promise_guard)
+        (promise_line
+          (class_guard)
+          (promiser))))))

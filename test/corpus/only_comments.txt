@@ -1,0 +1,12 @@
+==================
+Only Comments
+==================
+
+# This is a policy file
+# containing only comments
+
+---
+
+(source_file
+  (comment)
+  (comment))

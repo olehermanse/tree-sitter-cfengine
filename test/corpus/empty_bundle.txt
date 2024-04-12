@@ -1,0 +1,13 @@
+==================
+Empty bundle
+==================
+
+bundle agent my_bundle {}
+
+---
+
+(source_file
+  (bundle
+    (bundle_type)
+    (bundle_id)
+    (bundle_body)))
