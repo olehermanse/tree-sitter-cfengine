@@ -55,11 +55,23 @@ module.exports = grammar({
       repeat($.class_guarded_promises)
     ),
 
-    right_value: $ => choice(
+    _right_value: $ => choice(
       $.quoted_string,
-      $.qualified_identifier
-      // TODO: list
+      $.qualified_identifier,
+      $.list,
       // TODO: function
+    ),
+
+    list: $ => seq(
+      '{',
+      optional($._inner_list),
+      '}'
+    ),
+
+    _inner_list: $ => seq(
+      $._right_value,
+      repeat(seq(',', $._right_value)),
+      optional(',')
     ),
 
     class_guarded_promises: $ => prec.right(1, seq(
@@ -69,7 +81,7 @@ module.exports = grammar({
 
     promise: $ => seq(
       alias($.quoted_string, $.promiser),
-      optional(seq('->', alias($.right_value, $.stakeholder))),
+      optional(seq('->', alias($._right_value, $.stakeholder))),
       optional($.attribute),
       repeat(seq(',', $.attribute)),
       optional(','),
@@ -79,7 +91,7 @@ module.exports = grammar({
     attribute: $ => seq(
       alias($.identifier, $.attribute_name),
       '=>',
-      $.right_value
+      $._right_value
     ),
 
     quoted_string: $ => /\"((\\(.|\n))|[^"\\])*\"|\'((\\(.|\n))|[^'\\])*\'|`[^`]*`/,

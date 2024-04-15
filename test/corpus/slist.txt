@@ -1,16 +1,17 @@
 ==================
-Promise attributes
+slist
 ==================
 
 bundle agent main
 {
   vars:
-    "foo"
-      string => "bar",
-      if => "any";
-
-  reports:
-    "Hello, world!";
+    "a"
+      slist => {"foo", "bar", "baz"};
+    "b"
+      slist => {
+        "lorem",
+        "ipsum",
+      };
 }
 
 ---
@@ -27,11 +28,14 @@ bundle agent main
           (promiser)
           (attribute
             (attribute_name)
-            (quoted_string))
+            (list
+              (quoted_string)
+              (quoted_string)
+              (quoted_string))))
+        (promise
+          (promiser)
           (attribute
             (attribute_name)
-            (quoted_string))))
-      (bundle_section
-        (promise_guard)
-        (promise
-          (promiser))))))
+            (list
+              (quoted_string)
+              (quoted_string))))))))

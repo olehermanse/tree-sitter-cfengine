@@ -1,5 +1,5 @@
 ==================
-Promise attributes
+Qualified identifier
 ==================
 
 bundle agent main
@@ -30,9 +30,7 @@ bundle agent main
           (promiser)
           (attribute
             (attribute_name)
-            (right_value
-              (quoted_string)))
+            (quoted_string))
           (attribute
             (attribute_name)
-            (right_value
-              (qualified_identifier))))))))
+            (qualified_identifier)))))))

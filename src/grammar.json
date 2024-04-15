@@ -175,7 +175,7 @@
         }
       ]
     },
-    "right_value": {
+    "_right_value": {
       "type": "CHOICE",
       "members": [
         {
@@ -185,6 +185,72 @@
         {
           "type": "SYMBOL",
           "name": "qualified_identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list"
+        }
+      ]
+    },
+    "list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_inner_list"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "_inner_list": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_right_value"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_right_value"
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -238,7 +304,7 @@
                   "type": "ALIAS",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "right_value"
+                    "name": "_right_value"
                   },
                   "named": true,
                   "value": "stakeholder"
@@ -314,7 +380,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "right_value"
+          "name": "_right_value"
         }
       ]
     },
