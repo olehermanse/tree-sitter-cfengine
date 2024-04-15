@@ -1,11 +1,11 @@
 ==================
-Identifier as promisee
+Hello world reports promise
 ==================
 
 bundle agent my_bundle
 {
   reports:
-      "promiser" -> promisee;
+    "Hello World!";
 }
 
 ---
@@ -19,6 +19,4 @@ bundle agent my_bundle
       (bundle_section
         (promise_guard)
         (promise
-          (promiser)
-          (promisee
-            (identifier)))))))
+          (promiser))))))

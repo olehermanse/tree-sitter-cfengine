@@ -1,12 +1,11 @@
 ==================
-Class guard
+Quoted string as stakeholder
 ==================
 
 bundle agent my_bundle
 {
   reports:
-    any::
-      "Hello World!";
+    "promiser" -> "stakeholder";
 }
 
 ---
@@ -19,7 +18,7 @@ bundle agent my_bundle
     (bundle_body
       (bundle_section
         (promise_guard)
-        (class_guarded_promises
-          (class_guard)
-          (promise
-            (promiser)))))))
+        (promise
+          (promiser)
+          (stakeholder
+            (quoted_string)))))))

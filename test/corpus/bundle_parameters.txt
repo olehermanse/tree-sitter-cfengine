@@ -1,8 +1,8 @@
 ==================
-Argument list with trailing comma
+Bundle parameters
 ==================
 
-bundle agent my_bundle(one, two, three,)
+bundle agent my_bundle(one, two, three)
 {
 }
 

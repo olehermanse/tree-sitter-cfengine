@@ -1,5 +1,5 @@
 ==================
-Class guards
+Promise attributes
 ==================
 
 bundle agent main

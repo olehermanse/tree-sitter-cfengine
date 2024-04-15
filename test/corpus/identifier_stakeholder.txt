@@ -1,11 +1,11 @@
 ==================
-Quoted string as promisee
+Identifier as stakeholder
 ==================
 
 bundle agent my_bundle
 {
   reports:
-      "promiser" -> "promisee";
+    "promiser" -> stakeholder;
 }
 
 ---
@@ -20,5 +20,5 @@ bundle agent my_bundle
         (promise_guard)
         (promise
           (promiser)
-          (promisee
-            (quoted_string)))))))
+          (stakeholder
+            (identifier)))))))
