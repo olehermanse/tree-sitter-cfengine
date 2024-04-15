@@ -1,0 +1,29 @@
+==================
+Calling a bundle
+==================
+
+bundle agent main
+{
+  methods:
+    "Something else",
+      usebundle => ns:bundle_name("arg1", "arg2");
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_keyword)
+    (bundle_type)
+    (bundle_name)
+    (bundle_body
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser)
+          (attribute
+            (attribute_name)
+            (call
+              (calling_identifier)
+              (quoted_string)
+              (quoted_string))))))))

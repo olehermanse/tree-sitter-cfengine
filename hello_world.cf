@@ -2,10 +2,8 @@ bundle agent main
 {
   vars:
     "a"
-      slist => {"foo", "bar", "baz"};
-    "b"
-      slist => {
-        "lorem",
-        "ipsum",
-      };
+      slist => call("a", "b", call("d"));
+  methods:
+    "Something else",
+      usebundle => ns:bundle_name("arg1", "arg2");
 }

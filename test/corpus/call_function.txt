@@ -1,0 +1,32 @@
+==================
+Calling a function
+==================
+
+bundle agent main
+{
+  files:
+    "/tmp/hello_world.txt"
+      content => "Hello, world",
+      if => fileexists("$(this.promiser)");
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_keyword)
+    (bundle_type)
+    (bundle_name)
+    (bundle_body
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser)
+          (attribute
+            (attribute_name)
+            (quoted_string))
+          (attribute
+            (attribute_name)
+            (call
+              (calling_identifier)
+              (quoted_string))))))))

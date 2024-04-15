@@ -189,6 +189,44 @@
         {
           "type": "SYMBOL",
           "name": "list"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "call"
+        }
+      ]
+    },
+    "call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_identifier"
+          },
+          "named": true,
+          "value": "calling_identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_value_list"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ")"
         }
       ]
     },
@@ -204,7 +242,7 @@
           "members": [
             {
               "type": "SYMBOL",
-              "name": "_inner_list"
+              "name": "_value_list"
             },
             {
               "type": "BLANK"
@@ -217,7 +255,7 @@
         }
       ]
     },
-    "_inner_list": {
+    "_value_list": {
       "type": "SEQ",
       "members": [
         {

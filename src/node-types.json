@@ -12,6 +12,10 @@
           "named": true
         },
         {
+          "type": "call",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -96,6 +100,37 @@
     }
   },
   {
+    "type": "call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "call",
+          "named": true
+        },
+        {
+          "type": "calling_identifier",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "qualified_identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "class_guarded_promises",
     "named": true,
     "fields": {},
@@ -122,6 +157,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "call",
+          "named": true
+        },
         {
           "type": "list",
           "named": true
@@ -199,6 +238,10 @@
       "required": true,
       "types": [
         {
+          "type": "call",
+          "named": true
+        },
+        {
           "type": "list",
           "named": true
         },
@@ -251,6 +294,10 @@
   },
   {
     "type": "bundle_type",
+    "named": true
+  },
+  {
+    "type": "calling_identifier",
     "named": true
   },
   {

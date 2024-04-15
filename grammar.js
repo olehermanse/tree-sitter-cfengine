@@ -59,16 +59,26 @@ module.exports = grammar({
       $.quoted_string,
       $.qualified_identifier,
       $.list,
-      // TODO: function
+      $.call,
+    ),
+
+    call: $ => seq(
+      alias($.qualified_identifier, $.calling_identifier),
+      '(',
+      optional($._value_list),
+      ')'
     ),
 
     list: $ => seq(
       '{',
-      optional($._inner_list),
+      optional($._value_list),
       '}'
     ),
 
-    _inner_list: $ => seq(
+    // inner part of a non-empty list of values
+    // such as the arguments of a function call
+    // or the strings in an slist
+    _value_list: $ => seq(
       $._right_value,
       repeat(seq(',', $._right_value)),
       optional(',')
