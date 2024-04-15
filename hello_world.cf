@@ -1,13 +1,5 @@
-bundle agent main
-{
-@if_something
+@if minimum_version(3.18)
+bundle agent my_bundle {}
+@else
+bundle agent their_bundle {}
 @endif
-}
-
-body files control
-{
-  inputs => { "promises.cf" };
-  linux::
-    inputs => { "linux.cf" };
-    something_else => {};
-}

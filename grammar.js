@@ -119,6 +119,6 @@ module.exports = grammar({
 
     comment: ($) => token(seq("#", /.*/)),
 
-    macro: ($) => token(/@[^\n].*/),
+    macro: ($) => token(/@(if |else|endif)[^\n]*/),
   },
 });
