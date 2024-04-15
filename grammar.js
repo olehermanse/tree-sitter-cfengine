@@ -56,9 +56,8 @@ module.exports = grammar({
     ),
 
     right_value: $ => choice(
-      $.identifier,
-      $.quoted_string
-      // TODO: naked_variable
+      $.quoted_string,
+      $._qualified_identifier
       // TODO: list
       // TODO: function
     ),
@@ -86,6 +85,12 @@ module.exports = grammar({
     quoted_string: $ => /\"((\\(.|\n))|[^"\\])*\"|\'((\\(.|\n))|[^'\\])*\'|`[^`]*`/,
 
     identifier: $ => /[a-zA-Z0-9_]+/,
+
+    _qualified_identifier: $ => seq(
+      optional(seq(alias($.identifier, $.namespace), ':')),
+      optional(seq(alias($.identifier, $.bundle_name), '.')),
+      $.identifier
+    ),
 
     promise_guard: $ => /[a-zA-Z_]+:/,
 
