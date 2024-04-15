@@ -184,7 +184,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_qualified_identifier"
+          "name": "qualified_identifier"
         }
       ]
     },
@@ -326,66 +326,9 @@
       "type": "PATTERN",
       "value": "[a-zA-Z0-9_]+"
     },
-    "_qualified_identifier": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "identifier"
-                  },
-                  "named": true,
-                  "value": "namespace"
-                },
-                {
-                  "type": "STRING",
-                  "value": ":"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "identifier"
-                  },
-                  "named": true,
-                  "value": "bundle_name"
-                },
-                {
-                  "type": "STRING",
-                  "value": "."
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        }
-      ]
+    "qualified_identifier": {
+      "type": "PATTERN",
+      "value": "([a-zA-Z0-9_]+\\:)?([a-zA-Z0-9_]+\\.)?[a-zA-Z0-9_]+"
     },
     "promise_guard": {
       "type": "PATTERN",

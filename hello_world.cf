@@ -1,10 +1,13 @@
 bundle agent main
 {
+  classes:
+    "my_class";
   vars:
     "foo"
       string => "bar",
-      if => "any";
+      if => default:main.my_class;
 
   reports:
-    "Hello, world!";
+    any::
+      "Hello, world!";
 }

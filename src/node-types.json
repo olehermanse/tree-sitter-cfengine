@@ -149,19 +149,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "bundle_name",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "namespace",
+          "type": "qualified_identifier",
           "named": true
         },
         {
@@ -191,19 +183,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "bundle_name",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "namespace",
+          "type": "qualified_identifier",
           "named": true
         },
         {
@@ -227,14 +211,6 @@
   },
   {
     "type": "->",
-    "named": false
-  },
-  {
-    "type": ".",
-    "named": false
-  },
-  {
-    "type": ":",
     "named": false
   },
   {
@@ -270,15 +246,7 @@
     "named": true
   },
   {
-    "type": "identifier",
-    "named": true
-  },
-  {
     "type": "macro",
-    "named": true
-  },
-  {
-    "type": "namespace",
     "named": true
   },
   {
@@ -291,6 +259,10 @@
   },
   {
     "type": "promiser",
+    "named": true
+  },
+  {
+    "type": "qualified_identifier",
     "named": true
   },
   {

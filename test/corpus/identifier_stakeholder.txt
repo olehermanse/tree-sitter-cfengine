@@ -21,4 +21,4 @@ bundle agent my_bundle
         (promise
           (promiser)
           (stakeholder
-            (identifier)))))))
+            (qualified_identifier)))))))
