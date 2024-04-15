@@ -1,0 +1,34 @@
+==================
+Body
+==================
+
+body files control
+{
+  inputs => { "promises.cf" };
+  linux::
+    inputs => { "linux.cf" };
+    something_else => { "linux.cf" };
+}
+
+---
+
+(source_file
+  (body_block
+    (body_keyword)
+    (body_type)
+    (body_name)
+    (body_body
+      (attribute
+        (attribute_name)
+        (list
+          (quoted_string)))
+      (class_guarded_body_attributes
+        (class_guard)
+        (attribute
+          (attribute_name)
+          (list
+            (quoted_string)))
+        (attribute
+          (attribute_name)
+          (list
+            (quoted_string)))))))

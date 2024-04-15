@@ -31,6 +31,56 @@
     }
   },
   {
+    "type": "body_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body_body",
+          "named": true
+        },
+        {
+          "type": "body_keyword",
+          "named": true
+        },
+        {
+          "type": "body_name",
+          "named": true
+        },
+        {
+          "type": "body_type",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "body_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "class_guarded_body_attributes",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "bundle_block",
     "named": true,
     "fields": {},
@@ -131,6 +181,25 @@
     }
   },
   {
+    "type": "class_guarded_body_attributes",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "class_guard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "class_guarded_promises",
     "named": true,
     "fields": {},
@@ -223,6 +292,10 @@
       "required": false,
       "types": [
         {
+          "type": "body_block",
+          "named": true
+        },
+        {
           "type": "bundle_block",
           "named": true
         }
@@ -282,6 +355,18 @@
   },
   {
     "type": "attribute_name",
+    "named": true
+  },
+  {
+    "type": "body_keyword",
+    "named": true
+  },
+  {
+    "type": "body_name",
+    "named": true
+  },
+  {
+    "type": "body_type",
     "named": true
   },
   {

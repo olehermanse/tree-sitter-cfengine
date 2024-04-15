@@ -1,9 +1,13 @@
 bundle agent main
 {
-  vars:
-    "a"
-      slist => call("a", "b", call("d"));
-  methods:
-    "Something else",
-      usebundle => ns:bundle_name("arg1", "arg2");
+@if_something
+@endif
+}
+
+body files control
+{
+  inputs => { "promises.cf" };
+  linux::
+    inputs => { "linux.cf" };
+    something_else => {};
 }

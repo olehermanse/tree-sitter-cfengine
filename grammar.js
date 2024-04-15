@@ -9,9 +9,33 @@ module.exports = grammar({
     _block: ($) =>
       choice(
         $.bundle_block,
-        // TODO: body
+        $.body_block,
         // TODO: promise
       ),
+
+    body_block: ($) =>
+      seq(
+        $.body_keyword,
+        alias($.identifier, $.body_type),
+        alias($.identifier, $.body_name),
+        optional($.parameter_list),
+        $.body_body,
+      ),
+    body_keyword: (_) => "body",
+    body_body: ($) =>
+      seq(
+        "{",
+        // 0 or more promises without a class guard:
+        repeat($._body_attribute),
+        // 0 or more class guards with 0 or more promises insde:
+        repeat($.class_guarded_body_attributes),
+        "}",
+      ),
+
+    _body_attribute: ($) => seq($.attribute, ";"),
+
+    class_guarded_body_attributes: ($) =>
+      seq($.class_guard, repeat($._body_attribute)),
 
     bundle_block: ($) =>
       seq(
