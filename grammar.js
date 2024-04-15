@@ -70,7 +70,7 @@ module.exports = grammar({
 
     promise: $ => seq(
       alias($.quoted_string, $.promiser),
-      optional(seq('->', alias($.right_value, $.promisee))),
+      optional(seq('->', alias($.right_value, $.stakeholder))),
       optional($.attribute),
       repeat(seq(',', $.attribute)),
       optional(','),
