@@ -134,30 +134,11 @@
           "named": true
         },
         {
-          "type": "promisee",
-          "named": true
-        },
-        {
           "type": "promiser",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "promisee",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
         },
         {
-          "type": "quoted_string",
+          "type": "stakeholder",
           "named": true
         }
       ]
@@ -192,6 +173,25 @@
       "types": [
         {
           "type": "bundle_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "stakeholder",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "quoted_string",
           "named": true
         }
       ]

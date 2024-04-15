@@ -51,8 +51,8 @@ enum ts_symbol_identifiers {
   alias_sym_bundle_name = 33,
   alias_sym_bundle_type = 34,
   alias_sym_parameter = 35,
-  alias_sym_promisee = 36,
-  alias_sym_promiser = 37,
+  alias_sym_promiser = 36,
+  alias_sym_stakeholder = 37,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -92,8 +92,8 @@ static const char * const ts_symbol_names[] = {
   [alias_sym_bundle_name] = "bundle_name",
   [alias_sym_bundle_type] = "bundle_type",
   [alias_sym_parameter] = "parameter",
-  [alias_sym_promisee] = "promisee",
   [alias_sym_promiser] = "promiser",
+  [alias_sym_stakeholder] = "stakeholder",
 };
 
 static const TSSymbol ts_symbol_map[] = {
@@ -133,8 +133,8 @@ static const TSSymbol ts_symbol_map[] = {
   [alias_sym_bundle_name] = alias_sym_bundle_name,
   [alias_sym_bundle_type] = alias_sym_bundle_type,
   [alias_sym_parameter] = alias_sym_parameter,
-  [alias_sym_promisee] = alias_sym_promisee,
   [alias_sym_promiser] = alias_sym_promiser,
+  [alias_sym_stakeholder] = alias_sym_stakeholder,
 };
 
 static const TSSymbolMetadata ts_symbol_metadata[] = {
@@ -282,11 +282,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [alias_sym_promisee] = {
+  [alias_sym_promiser] = {
     .visible = true,
     .named = true,
   },
-  [alias_sym_promiser] = {
+  [alias_sym_stakeholder] = {
     .visible = true,
     .named = true,
   },
@@ -312,7 +312,7 @@ static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE
   },
   [6] = {
     [0] = alias_sym_promiser,
-    [2] = alias_sym_promisee,
+    [2] = alias_sym_stakeholder,
   },
   [7] = {
     [0] = alias_sym_attribute_name,
@@ -322,7 +322,7 @@ static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE
 static const uint16_t ts_non_terminal_alias_map[] = {
   sym_right_value, 2,
     sym_right_value,
-    alias_sym_promisee,
+    alias_sym_stakeholder,
   0,
 };
 
