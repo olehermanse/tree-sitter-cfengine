@@ -1,0 +1,36 @@
+==================
+Dollar and @ expressions
+==================
+
+bundle agent main
+{
+  vars:
+    "list"
+      slist => { @(bundle.value) };
+    "string"
+      string => $(ns:bundle.value);
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser)
+          (attribute
+            (attribute_name)
+            (list
+              (at_expression
+                (qualified_identifier)))))
+        (promise
+          (promiser)
+          (attribute
+            (attribute_name)
+            (dollar_expression
+              (qualified_identifier))))))))

@@ -1,5 +1,20 @@
 [
   {
+    "type": "at_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "attribute",
     "named": true,
     "fields": {},
@@ -8,11 +23,19 @@
       "required": true,
       "types": [
         {
+          "type": "at_expression",
+          "named": true
+        },
+        {
           "type": "attribute_name",
           "named": true
         },
         {
           "type": "call",
+          "named": true
+        },
+        {
+          "type": "dollar_expression",
           "named": true
         },
         {
@@ -162,11 +185,19 @@
       "required": true,
       "types": [
         {
+          "type": "at_expression",
+          "named": true
+        },
+        {
           "type": "call",
           "named": true
         },
         {
           "type": "calling_identifier",
+          "named": true
+        },
+        {
+          "type": "dollar_expression",
           "named": true
         },
         {
@@ -246,6 +277,21 @@
     }
   },
   {
+    "type": "dollar_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "half_promise",
     "named": true,
     "fields": {},
@@ -269,7 +315,15 @@
       "required": false,
       "types": [
         {
+          "type": "at_expression",
+          "named": true
+        },
+        {
           "type": "call",
+          "named": true
+        },
+        {
+          "type": "dollar_expression",
           "named": true
         },
         {
@@ -403,7 +457,15 @@
       "required": true,
       "types": [
         {
+          "type": "at_expression",
+          "named": true
+        },
+        {
           "type": "call",
+          "named": true
+        },
+        {
+          "type": "dollar_expression",
           "named": true
         },
         {
@@ -420,6 +482,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "$",
+    "named": false
   },
   {
     "type": "(",
@@ -443,6 +509,10 @@
   },
   {
     "type": "=>",
+    "named": false
+  },
+  {
+    "type": "@",
     "named": false
   },
   {

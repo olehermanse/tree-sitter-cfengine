@@ -1,14 +1,8 @@
-bundle agent my_bundle
+bundle agent main
 {
   vars:
-    "foo"
-@if minimum_version(3.18)
-      string => call(variable, call("bar"));
-@else
-      if => { @{variable} },
-      string => call(variable, call("bar"));
-@endif
-
-  reports:
-    "foo";
+    "list"
+      slist => { @(bundle.value) };
+    "string"
+      string => $(ns:bundle.value);
 }

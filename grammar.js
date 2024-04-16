@@ -91,7 +91,17 @@ module.exports = grammar({
       ),
 
     _right_value: ($) =>
-      choice($.quoted_string, $.qualified_identifier, $.list, $.call),
+      choice(
+        $.quoted_string,
+        $.qualified_identifier,
+        $.list,
+        $.call,
+        $.dollar_expression,
+        $.at_expression,
+      ),
+
+    dollar_expression: ($) => seq("$", "(", $.qualified_identifier, ")"),
+    at_expression: ($) => seq("@", "(", $.qualified_identifier, ")"),
 
     call: ($) =>
       seq(
