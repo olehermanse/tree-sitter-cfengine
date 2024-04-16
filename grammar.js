@@ -23,7 +23,7 @@ module.exports = grammar({
         "{",
         // 0 or more promises without a class guard:
         repeat($._body_attribute),
-        // 0 or more class guards with 0 or more promises insde:
+        // 0 or more class guards with 0 or more promises inside:
         repeat($.class_guarded_body_attributes),
         "}",
       ),
@@ -43,7 +43,7 @@ module.exports = grammar({
         "{",
         // 0 or more promises without a class guard:
         repeat($._body_attribute),
-        // 0 or more class guards with 0 or more promises insde:
+        // 0 or more class guards with 0 or more promises inside:
         repeat(
           alias(
             $.class_guarded_body_attributes,
@@ -86,7 +86,7 @@ module.exports = grammar({
         $.promise_guard,
         // 0 or more promises without a class guard:
         optional($._promises),
-        // 0 or more class guards with 0 or more promises insde:
+        // 0 or more class guards with 0 or more promises inside:
         repeat($.class_guarded_promises),
       ),
 
