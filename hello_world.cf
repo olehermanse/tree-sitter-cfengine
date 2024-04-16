@@ -1,11 +1,18 @@
 bundle agent main
 {
   vars:
-    "list"
-      if => isvariable(variable),
-      slist => { @(expand_list) };
-    "string"
-      string => $(expand_string);
-    "string"
-      string => $($(expand_string));
+    "simple"
+      string => "string";
+    class_guard::
+      "list"
+        if => isvariable(foo),
+        slist => { @(ns:bundle.foo) };
+      "string"
+        string => $(bar);
+      "string"
+@if minimum_version(3.18)
+        string => $($(baz));
+@else
+        string => $($(baz));
+@endif
 }
