@@ -297,6 +297,10 @@
       "required": true,
       "types": [
         {
+          "type": "dollar_expression",
+          "named": true
+        },
+        {
           "type": "dollar_expression_end",
           "named": true
         },

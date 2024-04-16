@@ -410,13 +410,22 @@
           "value": "dollar_expression_start"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "qualified_identifier"
-          },
-          "named": true,
-          "value": "dollar_expression_identifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "qualified_identifier"
+              },
+              "named": true,
+              "value": "dollar_expression_identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "dollar_expression"
+            }
+          ]
         },
         {
           "type": "ALIAS",

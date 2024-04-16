@@ -104,7 +104,10 @@ module.exports = grammar({
       seq(
         alias("$", $.dollar_expression_operator),
         alias("(", $.dollar_expression_start),
-        alias($.qualified_identifier, $.dollar_expression_identifier),
+        choice(
+          alias($.qualified_identifier, $.dollar_expression_identifier),
+          $.dollar_expression,
+        ),
         alias(")", $.dollar_expression_end),
       ),
     at_expression: ($) =>

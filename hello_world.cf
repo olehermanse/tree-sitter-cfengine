@@ -2,7 +2,10 @@ bundle agent main
 {
   vars:
     "list"
-      slist => { @(bundle.value) };
+      if => isvariable(variable),
+      slist => { @(expand_list) };
     "string"
-      string => $(ns:bundle.value);
+      string => $(expand_string);
+    "string"
+      string => $($(expand_string));
 }
