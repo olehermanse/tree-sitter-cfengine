@@ -39,19 +39,19 @@
       "required": true,
       "types": [
         {
-          "type": "body_body",
+          "type": "body_block_body",
           "named": true
         },
         {
-          "type": "body_keyword",
+          "type": "body_block_keyword",
           "named": true
         },
         {
-          "type": "body_name",
+          "type": "body_block_name",
           "named": true
         },
         {
-          "type": "body_type",
+          "type": "body_block_type",
           "named": true
         },
         {
@@ -62,7 +62,7 @@
     }
   },
   {
-    "type": "body_body",
+    "type": "body_block_body",
     "named": true,
     "fields": {},
     "children": {
@@ -89,19 +89,19 @@
       "required": true,
       "types": [
         {
-          "type": "bundle_body",
+          "type": "bundle_block_body",
           "named": true
         },
         {
-          "type": "bundle_keyword",
+          "type": "bundle_block_keyword",
           "named": true
         },
         {
-          "type": "bundle_name",
+          "type": "bundle_block_name",
           "named": true
         },
         {
-          "type": "bundle_type",
+          "type": "bundle_block_type",
           "named": true
         },
         {
@@ -112,7 +112,7 @@
     }
   },
   {
-    "type": "bundle_body",
+    "type": "bundle_block_body",
     "named": true,
     "fields": {},
     "children": {
@@ -186,6 +186,25 @@
   },
   {
     "type": "class_guarded_body_attributes",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "class_guard",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "class_guarded_promise_block_attributes",
     "named": true,
     "fields": {},
     "children": {
@@ -307,6 +326,52 @@
     }
   },
   {
+    "type": "promise_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "promise_block_body",
+          "named": true
+        },
+        {
+          "type": "promise_block_keyword",
+          "named": true
+        },
+        {
+          "type": "promise_block_name",
+          "named": true
+        },
+        {
+          "type": "promise_block_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "promise_block_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "class_guarded_promise_block_attributes",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -320,6 +385,10 @@
         },
         {
           "type": "bundle_block",
+          "named": true
+        },
+        {
+          "type": "promise_block",
           "named": true
         }
       ]
@@ -381,27 +450,27 @@
     "named": true
   },
   {
-    "type": "body_keyword",
+    "type": "body_block_keyword",
     "named": true
   },
   {
-    "type": "body_name",
+    "type": "body_block_name",
     "named": true
   },
   {
-    "type": "body_type",
+    "type": "body_block_type",
     "named": true
   },
   {
-    "type": "bundle_keyword",
+    "type": "bundle_block_keyword",
     "named": true
   },
   {
-    "type": "bundle_name",
+    "type": "bundle_block_name",
     "named": true
   },
   {
-    "type": "bundle_type",
+    "type": "bundle_block_type",
     "named": true
   },
   {
@@ -422,6 +491,18 @@
   },
   {
     "type": "parameter",
+    "named": true
+  },
+  {
+    "type": "promise_block_keyword",
+    "named": true
+  },
+  {
+    "type": "promise_block_name",
+    "named": true
+  },
+  {
+    "type": "promise_block_type",
     "named": true
   },
   {

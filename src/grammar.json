@@ -19,6 +19,10 @@
         {
           "type": "SYMBOL",
           "name": "body_block"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "promise_block"
         }
       ]
     },
@@ -27,7 +31,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "body_keyword"
+          "name": "body_block_keyword"
         },
         {
           "type": "ALIAS",
@@ -36,7 +40,7 @@
             "name": "identifier"
           },
           "named": true,
-          "value": "body_type"
+          "value": "body_block_type"
         },
         {
           "type": "ALIAS",
@@ -45,7 +49,7 @@
             "name": "identifier"
           },
           "named": true,
-          "value": "body_name"
+          "value": "body_block_name"
         },
         {
           "type": "CHOICE",
@@ -61,15 +65,15 @@
         },
         {
           "type": "SYMBOL",
-          "name": "body_body"
+          "name": "body_block_body"
         }
       ]
     },
-    "body_keyword": {
+    "body_block_keyword": {
       "type": "STRING",
       "value": "body"
     },
-    "body_body": {
+    "body_block_body": {
       "type": "SEQ",
       "members": [
         {
@@ -109,6 +113,73 @@
         }
       ]
     },
+    "promise_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "promise_block_keyword"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "promise_block_type"
+        },
+        {
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "promise_block_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "promise_block_body"
+        }
+      ]
+    },
+    "promise_block_keyword": {
+      "type": "STRING",
+      "value": "promise"
+    },
+    "promise_block_body": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_body_attribute"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
+              "name": "class_guarded_body_attributes"
+            },
+            "named": true,
+            "value": "class_guarded_promise_block_attributes"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
     "class_guarded_body_attributes": {
       "type": "SEQ",
       "members": [
@@ -130,7 +201,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "bundle_keyword"
+          "name": "bundle_block_keyword"
         },
         {
           "type": "ALIAS",
@@ -139,7 +210,7 @@
             "name": "identifier"
           },
           "named": true,
-          "value": "bundle_type"
+          "value": "bundle_block_type"
         },
         {
           "type": "ALIAS",
@@ -148,7 +219,7 @@
             "name": "identifier"
           },
           "named": true,
-          "value": "bundle_name"
+          "value": "bundle_block_name"
         },
         {
           "type": "CHOICE",
@@ -164,11 +235,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "bundle_body"
+          "name": "bundle_block_body"
         }
       ]
     },
-    "bundle_keyword": {
+    "bundle_block_keyword": {
       "type": "STRING",
       "value": "bundle"
     },
@@ -240,7 +311,7 @@
         }
       ]
     },
-    "bundle_body": {
+    "bundle_block_body": {
       "type": "SEQ",
       "members": [
         {

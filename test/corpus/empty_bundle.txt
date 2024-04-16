@@ -8,7 +8,7 @@ bundle agent my_bundle {}
 
 (source_file
   (bundle_block
-    (bundle_keyword)
-    (bundle_type)
-    (bundle_name)
-    (bundle_body)))
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body)))

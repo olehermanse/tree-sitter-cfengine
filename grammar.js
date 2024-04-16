@@ -7,23 +7,18 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat($._block),
 
-    _block: ($) =>
-      choice(
-        $.bundle_block,
-        $.body_block,
-        // TODO: promise
-      ),
+    _block: ($) => choice($.bundle_block, $.body_block, $.promise_block),
 
     body_block: ($) =>
       seq(
-        $.body_keyword,
-        alias($.identifier, $.body_type),
-        alias($.identifier, $.body_name),
+        $.body_block_keyword,
+        alias($.identifier, $.body_block_type),
+        alias($.identifier, $.body_block_name),
         optional($.parameter_list),
-        $.body_body,
+        $.body_block_body,
       ),
-    body_keyword: (_) => "body",
-    body_body: ($) =>
+    body_block_keyword: (_) => "body",
+    body_block_body: ($) =>
       seq(
         "{",
         // 0 or more promises without a class guard:
@@ -35,18 +30,41 @@ module.exports = grammar({
 
     _body_attribute: ($) => seq($.attribute, ";"),
 
+    promise_block: ($) =>
+      seq(
+        $.promise_block_keyword,
+        alias($.identifier, $.promise_block_type),
+        alias($.identifier, $.promise_block_name),
+        $.promise_block_body,
+      ),
+    promise_block_keyword: (_) => "promise",
+    promise_block_body: ($) =>
+      seq(
+        "{",
+        // 0 or more promises without a class guard:
+        repeat($._body_attribute),
+        // 0 or more class guards with 0 or more promises insde:
+        repeat(
+          alias(
+            $.class_guarded_body_attributes,
+            $.class_guarded_promise_block_attributes,
+          ),
+        ),
+        "}",
+      ),
+
     class_guarded_body_attributes: ($) =>
       seq($.class_guard, repeat($._body_attribute)),
 
     bundle_block: ($) =>
       seq(
-        $.bundle_keyword,
-        alias($.identifier, $.bundle_type),
-        alias($.identifier, $.bundle_name),
+        $.bundle_block_keyword,
+        alias($.identifier, $.bundle_block_type),
+        alias($.identifier, $.bundle_block_name),
         optional($.parameter_list),
-        $.bundle_body,
+        $.bundle_block_body,
       ),
-    bundle_keyword: (_) => "bundle",
+    bundle_block_keyword: (_) => "bundle",
 
     parameter_list: ($) =>
       seq(
@@ -61,7 +79,7 @@ module.exports = grammar({
         ")",
       ),
 
-    bundle_body: ($) => seq("{", repeat($.bundle_section), "}"),
+    bundle_block_body: ($) => seq("{", repeat($.bundle_section), "}"),
 
     bundle_section: ($) =>
       seq(

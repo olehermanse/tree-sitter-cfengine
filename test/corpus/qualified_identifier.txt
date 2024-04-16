@@ -16,10 +16,10 @@ bundle agent main
 
 (source_file
   (bundle_block
-    (bundle_keyword)
-    (bundle_type)
-    (bundle_name)
-    (bundle_body
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
       (bundle_section
         (promise_guard)
         (promise

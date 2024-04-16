@@ -10,11 +10,11 @@ bundle agent my_bundle(one, two, three)
 
 (source_file
   (bundle_block
-    (bundle_keyword)
-    (bundle_type)
-    (bundle_name)
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
     (parameter_list
       (parameter)
       (parameter)
       (parameter))
-    (bundle_body)))
+    (bundle_block_body)))

@@ -14,10 +14,10 @@ body files control
 
 (source_file
   (body_block
-    (body_keyword)
-    (body_type)
-    (body_name)
-    (body_body
+    (body_block_keyword)
+    (body_block_type)
+    (body_block_name)
+    (body_block_body
       (attribute
         (attribute_name)
         (list
