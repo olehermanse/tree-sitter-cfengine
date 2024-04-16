@@ -139,6 +139,10 @@
           "named": true
         },
         {
+          "type": "half_promise",
+          "named": true
+        },
+        {
           "type": "promise",
           "named": true
         },
@@ -212,7 +216,26 @@
           "named": true
         },
         {
+          "type": "half_promise",
+          "named": true
+        },
+        {
           "type": "promise",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "half_promise",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute",
           "named": true
         }
       ]

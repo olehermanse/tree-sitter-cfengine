@@ -2,6 +2,7 @@ module.exports = grammar({
   name: "cfengine",
 
   extras: ($) => [$.comment, $.macro, /[\s]+/],
+  word: ($) => $.identifier,
 
   rules: {
     source_file: ($) => repeat($._block),
@@ -66,7 +67,7 @@ module.exports = grammar({
       seq(
         $.promise_guard,
         // 0 or more promises without a class guard:
-        repeat($.promise),
+        optional($._promises),
         // 0 or more class guards with 0 or more promises insde:
         repeat($.class_guarded_promises),
       ),
@@ -91,7 +92,9 @@ module.exports = grammar({
       seq($._right_value, repeat(seq(",", $._right_value)), optional(",")),
 
     class_guarded_promises: ($) =>
-      prec.right(1, seq($.class_guard, prec(1, repeat($.promise)))),
+      prec.right(1, seq($.class_guard, prec(1, optional($._promises)))),
+
+    _promises: ($) => seq($.promise, repeat(choice($.promise, $.half_promise))),
 
     promise: ($) =>
       seq(
@@ -102,6 +105,14 @@ module.exports = grammar({
         optional(","),
         ";",
       ),
+
+    // "Half promises" are not real, and shouldn't normally be allowed
+    // in policy. However they can arise from using macros.
+    // So this is sort of a hack to make the parser work better
+    // when faced with macros.
+    // TODO: resarch if there are better ways to handle macros
+    half_promise: ($) =>
+      seq($.attribute, repeat(seq(",", $.attribute)), optional(","), ";"),
 
     attribute: ($) =>
       seq(alias($.identifier, $.attribute_name), "=>", $._right_value),

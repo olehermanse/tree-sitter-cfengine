@@ -24,3 +24,51 @@ bundle agent their_bundle {}
     (bundle_name)
     (bundle_body))
   (macro))
+
+==================
+Macros and half promises
+==================
+bundle agent my_bundle
+{
+  vars:
+    "foo"
+@if minimum_version(3.18)
+      string => call(variable, call("bar"));
+@else
+      string => {};
+@endif
+  reports:
+    "foo";
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_keyword)
+    (bundle_type)
+    (bundle_name)
+    (bundle_body
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser)
+          (macro)
+          (attribute
+            (attribute_name)
+            (call
+              (calling_identifier)
+              (qualified_identifier)
+              (call
+                (calling_identifier)
+                (quoted_string)))))
+        (macro)
+        (half_promise
+          (attribute
+            (attribute_name)
+            (list))))
+      (macro)
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser))))))

@@ -1,5 +1,12 @@
+bundle agent my_bundle
+{
+  vars:
+    "foo"
 @if minimum_version(3.18)
-bundle agent my_bundle {}
+      string => call(variable, call("bar"));
 @else
-bundle agent their_bundle {}
+      string => {};
 @endif
+  reports:
+    "foo";
+}

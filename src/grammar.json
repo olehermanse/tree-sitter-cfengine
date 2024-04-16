@@ -1,5 +1,6 @@
 {
   "name": "cfengine",
+  "word": "identifier",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -267,11 +268,16 @@
           "name": "promise_guard"
         },
         {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "promise"
-          }
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_promises"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "REPEAT",
@@ -413,15 +419,45 @@
             "type": "PREC",
             "value": 1,
             "content": {
-              "type": "REPEAT",
-              "content": {
-                "type": "SYMBOL",
-                "name": "promise"
-              }
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_promises"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
             }
           }
         ]
       }
+    },
+    "_promises": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "promise"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "promise"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "half_promise"
+              }
+            ]
+          }
+        }
+      ]
     },
     "promise": {
       "type": "SEQ",
@@ -472,6 +508,47 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "attribute"
+              }
+            ]
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "half_promise": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "attribute"
         },
         {
           "type": "REPEAT",
