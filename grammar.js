@@ -100,8 +100,20 @@ module.exports = grammar({
         $.at_expression,
       ),
 
-    dollar_expression: ($) => seq("$", "(", $.qualified_identifier, ")"),
-    at_expression: ($) => seq("@", "(", $.qualified_identifier, ")"),
+    dollar_expression: ($) =>
+      seq(
+        alias("$", $.dollar_expression_operator),
+        alias("(", $.dollar_expression_start),
+        alias($.qualified_identifier, $.dollar_expression_identifier),
+        alias(")", $.dollar_expression_end),
+      ),
+    at_expression: ($) =>
+      seq(
+        alias("@", $.at_expression_operator),
+        alias("(", $.at_expression_start),
+        alias($.qualified_identifier, $.at_expression_identifier),
+        alias(")", $.at_expression_end),
+      ),
 
     call: ($) =>
       seq(

@@ -392,20 +392,40 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "$"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "$"
+          },
+          "named": true,
+          "value": "dollar_expression_operator"
         },
         {
-          "type": "STRING",
-          "value": "("
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "("
+          },
+          "named": true,
+          "value": "dollar_expression_start"
         },
         {
-          "type": "SYMBOL",
-          "name": "qualified_identifier"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_identifier"
+          },
+          "named": true,
+          "value": "dollar_expression_identifier"
         },
         {
-          "type": "STRING",
-          "value": ")"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": ")"
+          },
+          "named": true,
+          "value": "dollar_expression_end"
         }
       ]
     },
@@ -413,20 +433,40 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "@"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "@"
+          },
+          "named": true,
+          "value": "at_expression_operator"
         },
         {
-          "type": "STRING",
-          "value": "("
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": "("
+          },
+          "named": true,
+          "value": "at_expression_start"
         },
         {
-          "type": "SYMBOL",
-          "name": "qualified_identifier"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "qualified_identifier"
+          },
+          "named": true,
+          "value": "at_expression_identifier"
         },
         {
-          "type": "STRING",
-          "value": ")"
+          "type": "ALIAS",
+          "content": {
+            "type": "STRING",
+            "value": ")"
+          },
+          "named": true,
+          "value": "at_expression_end"
         }
       ]
     },

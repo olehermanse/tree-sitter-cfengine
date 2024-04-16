@@ -27,10 +27,16 @@ bundle agent main
             (attribute_name)
             (list
               (at_expression
-                (qualified_identifier)))))
+                (at_expression_operator)
+                (at_expression_start)
+                (at_expression_identifier)
+                (at_expression_end)))))
         (promise
           (promiser)
           (attribute
             (attribute_name)
             (dollar_expression
-              (qualified_identifier))))))))
+              (dollar_expression_operator)
+              (dollar_expression_start)
+              (dollar_expression_identifier)
+              (dollar_expression_end))))))))

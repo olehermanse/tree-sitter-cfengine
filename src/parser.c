@@ -8,12 +8,12 @@
 #define STATE_COUNT 132
 #define LARGE_STATE_COUNT 2
 #define SYMBOL_COUNT 54
-#define ALIAS_COUNT 11
+#define ALIAS_COUNT 17
 #define TOKEN_COUNT 21
 #define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 0
 #define MAX_ALIAS_SEQUENCE_LENGTH 7
-#define PRODUCTION_ID_COUNT 9
+#define PRODUCTION_ID_COUNT 11
 
 enum ts_symbol_identifiers {
   sym_identifier = 1,
@@ -69,17 +69,23 @@ enum ts_symbol_identifiers {
   aux_sym__value_list_repeat1 = 51,
   aux_sym__promises_repeat1 = 52,
   aux_sym_promise_repeat1 = 53,
-  alias_sym_attribute_name = 54,
-  alias_sym_body_block_name = 55,
-  alias_sym_body_block_type = 56,
-  alias_sym_bundle_block_name = 57,
-  alias_sym_bundle_block_type = 58,
-  alias_sym_calling_identifier = 59,
-  alias_sym_class_guarded_promise_block_attributes = 60,
-  alias_sym_promise_block_name = 61,
-  alias_sym_promise_block_type = 62,
-  alias_sym_promiser = 63,
-  alias_sym_stakeholder = 64,
+  alias_sym_at_expression_end = 54,
+  alias_sym_at_expression_identifier = 55,
+  alias_sym_at_expression_start = 56,
+  alias_sym_attribute_name = 57,
+  alias_sym_body_block_name = 58,
+  alias_sym_body_block_type = 59,
+  alias_sym_bundle_block_name = 60,
+  alias_sym_bundle_block_type = 61,
+  alias_sym_calling_identifier = 62,
+  alias_sym_class_guarded_promise_block_attributes = 63,
+  alias_sym_dollar_expression_end = 64,
+  alias_sym_dollar_expression_identifier = 65,
+  alias_sym_dollar_expression_start = 66,
+  alias_sym_promise_block_name = 67,
+  alias_sym_promise_block_type = 68,
+  alias_sym_promiser = 69,
+  alias_sym_stakeholder = 70,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -94,8 +100,8 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_LPAREN] = "(",
   [anon_sym_COMMA] = ",",
   [anon_sym_RPAREN] = ")",
-  [anon_sym_DOLLAR] = "$",
-  [anon_sym_AT] = "@",
+  [anon_sym_DOLLAR] = "dollar_expression_operator",
+  [anon_sym_AT] = "at_expression_operator",
   [anon_sym_DASH_GT] = "->",
   [anon_sym_EQ_GT] = "=>",
   [sym_quoted_string] = "quoted_string",
@@ -137,6 +143,9 @@ static const char * const ts_symbol_names[] = {
   [aux_sym__value_list_repeat1] = "_value_list_repeat1",
   [aux_sym__promises_repeat1] = "_promises_repeat1",
   [aux_sym_promise_repeat1] = "promise_repeat1",
+  [alias_sym_at_expression_end] = "at_expression_end",
+  [alias_sym_at_expression_identifier] = "at_expression_identifier",
+  [alias_sym_at_expression_start] = "at_expression_start",
   [alias_sym_attribute_name] = "attribute_name",
   [alias_sym_body_block_name] = "body_block_name",
   [alias_sym_body_block_type] = "body_block_type",
@@ -144,6 +153,9 @@ static const char * const ts_symbol_names[] = {
   [alias_sym_bundle_block_type] = "bundle_block_type",
   [alias_sym_calling_identifier] = "calling_identifier",
   [alias_sym_class_guarded_promise_block_attributes] = "class_guarded_promise_block_attributes",
+  [alias_sym_dollar_expression_end] = "dollar_expression_end",
+  [alias_sym_dollar_expression_identifier] = "dollar_expression_identifier",
+  [alias_sym_dollar_expression_start] = "dollar_expression_start",
   [alias_sym_promise_block_name] = "promise_block_name",
   [alias_sym_promise_block_type] = "promise_block_type",
   [alias_sym_promiser] = "promiser",
@@ -205,6 +217,9 @@ static const TSSymbol ts_symbol_map[] = {
   [aux_sym__value_list_repeat1] = aux_sym__value_list_repeat1,
   [aux_sym__promises_repeat1] = aux_sym__promises_repeat1,
   [aux_sym_promise_repeat1] = aux_sym_promise_repeat1,
+  [alias_sym_at_expression_end] = alias_sym_at_expression_end,
+  [alias_sym_at_expression_identifier] = alias_sym_at_expression_identifier,
+  [alias_sym_at_expression_start] = alias_sym_at_expression_start,
   [alias_sym_attribute_name] = alias_sym_attribute_name,
   [alias_sym_body_block_name] = alias_sym_body_block_name,
   [alias_sym_body_block_type] = alias_sym_body_block_type,
@@ -212,6 +227,9 @@ static const TSSymbol ts_symbol_map[] = {
   [alias_sym_bundle_block_type] = alias_sym_bundle_block_type,
   [alias_sym_calling_identifier] = alias_sym_calling_identifier,
   [alias_sym_class_guarded_promise_block_attributes] = alias_sym_class_guarded_promise_block_attributes,
+  [alias_sym_dollar_expression_end] = alias_sym_dollar_expression_end,
+  [alias_sym_dollar_expression_identifier] = alias_sym_dollar_expression_identifier,
+  [alias_sym_dollar_expression_start] = alias_sym_dollar_expression_start,
   [alias_sym_promise_block_name] = alias_sym_promise_block_name,
   [alias_sym_promise_block_type] = alias_sym_promise_block_type,
   [alias_sym_promiser] = alias_sym_promiser,
@@ -265,11 +283,11 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [anon_sym_DOLLAR] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [anon_sym_AT] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
   [anon_sym_DASH_GT] = {
     .visible = true,
@@ -435,6 +453,18 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = false,
   },
+  [alias_sym_at_expression_end] = {
+    .visible = true,
+    .named = true,
+  },
+  [alias_sym_at_expression_identifier] = {
+    .visible = true,
+    .named = true,
+  },
+  [alias_sym_at_expression_start] = {
+    .visible = true,
+    .named = true,
+  },
   [alias_sym_attribute_name] = {
     .visible = true,
     .named = true,
@@ -460,6 +490,18 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = true,
   },
   [alias_sym_class_guarded_promise_block_attributes] = {
+    .visible = true,
+    .named = true,
+  },
+  [alias_sym_dollar_expression_end] = {
+    .visible = true,
+    .named = true,
+  },
+  [alias_sym_dollar_expression_identifier] = {
+    .visible = true,
+    .named = true,
+  },
+  [alias_sym_dollar_expression_start] = {
     .visible = true,
     .named = true,
   },
@@ -510,6 +552,16 @@ static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE
   [8] = {
     [0] = alias_sym_promiser,
     [2] = alias_sym_stakeholder,
+  },
+  [9] = {
+    [1] = alias_sym_dollar_expression_start,
+    [2] = alias_sym_dollar_expression_identifier,
+    [3] = alias_sym_dollar_expression_end,
+  },
+  [10] = {
+    [1] = alias_sym_at_expression_start,
+    [2] = alias_sym_at_expression_identifier,
+    [3] = alias_sym_at_expression_end,
   },
 };
 
@@ -2806,8 +2858,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [154] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_bundle_section, 2),
   [156] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_half_promise, 3),
   [158] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_half_promise, 3),
-  [160] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_dollar_expression, 4),
-  [162] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_at_expression, 4),
+  [160] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_dollar_expression, 4, .production_id = 9),
+  [162] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_at_expression, 4, .production_id = 10),
   [164] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_call, 4, .production_id = 7),
   [166] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_promise, 5, .production_id = 8),
   [168] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_promise, 5, .production_id = 8),

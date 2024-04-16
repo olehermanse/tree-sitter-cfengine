@@ -4,11 +4,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "qualified_identifier",
+          "type": "at_expression_end",
+          "named": true
+        },
+        {
+          "type": "at_expression_identifier",
+          "named": true
+        },
+        {
+          "type": "at_expression_operator",
+          "named": true
+        },
+        {
+          "type": "at_expression_start",
           "named": true
         }
       ]
@@ -281,11 +293,23 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "qualified_identifier",
+          "type": "dollar_expression_end",
+          "named": true
+        },
+        {
+          "type": "dollar_expression_identifier",
+          "named": true
+        },
+        {
+          "type": "dollar_expression_operator",
+          "named": true
+        },
+        {
+          "type": "dollar_expression_start",
           "named": true
         }
       ]
@@ -484,10 +508,6 @@
     }
   },
   {
-    "type": "$",
-    "named": false
-  },
-  {
     "type": "(",
     "named": false
   },
@@ -512,8 +532,20 @@
     "named": false
   },
   {
-    "type": "@",
-    "named": false
+    "type": "at_expression_end",
+    "named": true
+  },
+  {
+    "type": "at_expression_identifier",
+    "named": true
+  },
+  {
+    "type": "at_expression_operator",
+    "named": true
+  },
+  {
+    "type": "at_expression_start",
+    "named": true
   },
   {
     "type": "attribute_name",
@@ -553,6 +585,22 @@
   },
   {
     "type": "comment",
+    "named": true
+  },
+  {
+    "type": "dollar_expression_end",
+    "named": true
+  },
+  {
+    "type": "dollar_expression_identifier",
+    "named": true
+  },
+  {
+    "type": "dollar_expression_operator",
+    "named": true
+  },
+  {
+    "type": "dollar_expression_start",
     "named": true
   },
   {
