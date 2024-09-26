@@ -15,10 +15,14 @@ The grammar currently supports all major features of the language, including:
 - Function calls
 - Lists, strings, expansions (with `$()` and `@()`)
 
-Some things which could be expanded on:
+## Todos
 
+- Using the grammar for linting / syntax checking (language server)
 - Highlighting inside strings and comments
 - Recognizing when there is JSON inside policy
+- Class guards which are quoted strings
+- Using the grammar for code indentation
+- Using the grammar for extensions to other editors
 
 Before contributing for the first time, it's recommended to go through the tree-sitter tutorial for getting familiar with how everything works:
 
