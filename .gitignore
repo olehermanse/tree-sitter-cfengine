@@ -2,3 +2,8 @@
 /build/
 /cfengine.dylib.dSYM/
 /cfengine.dylib
+bindings/python/tree_sitter_cfengine.egg-info/
+libtree-sitter-cfengine.a
+libtree-sitter-cfengine.dylib
+src/parser.o
+tree-sitter-cfengine.pc
