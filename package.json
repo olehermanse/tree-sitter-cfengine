@@ -25,11 +25,11 @@
     "url": "github.com/olehermanse/tree-sitter-cfengine"
   },
   "dependencies": {
-    "node-addon-api": "^7.1.0",
-    "node-gyp-build": "^4.8.0"
+    "node-addon-api": "^7.1.1",
+    "node-gyp-build": "^4.8.2"
   },
   "peerDependencies": {
-    "tree-sitter": "^0.21.0"
+    "tree-sitter": "^0.21.1"
   },
   "peerDependenciesMeta": {
     "tree_sitter": {
@@ -37,8 +37,8 @@
     }
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.22.2",
-    "prebuildify": "^6.0.0"
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.22.6"
   },
   "files": [
     "grammar.js",
