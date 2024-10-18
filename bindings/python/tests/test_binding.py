@@ -8,4 +8,4 @@ class TestLanguage(TestCase):
         try:
             tree_sitter.Language(tree_sitter_cfengine.language())
         except Exception:
-            self.fail("Error loading Cfengine grammar")
+            self.fail("Error loading CFEngine grammar")

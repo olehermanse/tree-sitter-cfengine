@@ -10,6 +10,6 @@ import (
 func TestCanLoadGrammar(t *testing.T) {
 	language := tree_sitter.NewLanguage(tree_sitter_cfengine.Language())
 	if language == nil {
-		t.Errorf("Error loading Cfengine grammar")
+		t.Errorf("Error loading CFEngine grammar")
 	}
 }

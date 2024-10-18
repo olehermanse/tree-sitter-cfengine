@@ -2,14 +2,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "TreeSitterCfengine",
+    name: "TreeSitterCFEngine",
     platforms: [.macOS(.v10_13), .iOS(.v11)],
     products: [
-        .library(name: "TreeSitterCfengine", targets: ["TreeSitterCfengine"]),
+        .library(name: "TreeSitterCFEngine", targets: ["TreeSitterCFEngine"]),
     ],
     dependencies: [],
     targets: [
-        .target(name: "TreeSitterCfengine",
+        .target(name: "TreeSitterCFEngine",
                 path: ".",
                 exclude: [
                     "Cargo.toml",

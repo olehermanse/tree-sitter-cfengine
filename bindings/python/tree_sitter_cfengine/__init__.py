@@ -1,4 +1,4 @@
-"Cfengine grammar for tree-sitter"
+"CFEngine grammar for tree-sitter"
 
 from ._binding import language
 

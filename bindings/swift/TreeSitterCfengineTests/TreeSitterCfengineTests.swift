@@ -1,12 +1,12 @@
 import XCTest
 import SwiftTreeSitter
-import TreeSitterCfengine
+import TreeSitterCFEngine
 
-final class TreeSitterCfengineTests: XCTestCase {
+final class TreeSitterCFEngineTests: XCTestCase {
     func testCanLoadGrammar() throws {
         let parser = Parser()
         let language = Language(language: tree_sitter_cfengine())
         XCTAssertNoThrow(try parser.setLanguage(language),
-                         "Error loading Cfengine grammar")
+                         "Error loading CFEngine grammar")
     }
 }
