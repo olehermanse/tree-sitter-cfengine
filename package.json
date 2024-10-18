@@ -1,20 +1,20 @@
 {
   "name": "tree-sitter-cfengine",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "CFEngine grammar for tree-sitter",
-  "repository": "github:olehermanse/tree-sitter-cfengine",
+  "repository": "github:tree-sitter/tree-sitter-cfengine",
   "license": "MIT",
-  "author": "Ole Herman Schumacher Elgesem <oleherman93@gmail.com>",
-  "maintainers": [
-    "Ole Herman Schumacher Elgesem <oleherman93@gmail.com>"
-  ],
+  "author": {
+    "name": "Ole Herman Schumacher Elgesem",
+    "email": "oleherman93@gmail.com"
+  },
   "main": "bindings/node",
   "types": "bindings/node",
   "keywords": [
     "incremental",
     "parsing",
     "tree-sitter",
-    "c"
+    "cfengine"
   ],
   "files": [
     "grammar.js",
@@ -26,17 +26,15 @@
     "*.wasm"
   ],
   "dependencies": {
-    "node-addon-api": "^8.2.1",
+    "node-addon-api": "^8.1.0",
     "node-gyp-build": "^4.8.2"
   },
   "devDependencies": {
-    "eslint": "^9.12.0",
-    "eslint-config-treesitter": "^1.0.2",
     "prebuildify": "^6.0.1",
     "tree-sitter-cli": "^0.24.3"
   },
   "peerDependencies": {
-    "tree-sitter": "^0.21.0"
+    "tree-sitter": "^0.21.1"
   },
   "peerDependenciesMeta": {
     "tree-sitter": {
@@ -45,9 +43,14 @@
   },
   "scripts": {
     "install": "node-gyp-build",
-    "lint": "eslint grammar.js",
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.cfengine",
+      "injection-regex": "^cfengine$"
+    }
+  ]
 }

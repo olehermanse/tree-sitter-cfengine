@@ -1,3 +1,12 @@
+/**
+ * @file CFEngine grammar for tree-sitter
+ * @author Ole Herman Schumacher Elgesem <oleherman93@gmail.com>
+ * @license MIT
+ */
+
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 module.exports = grammar({
   name: "cfengine",
 
