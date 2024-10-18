@@ -1,9 +1,40 @@
-/node_modules/
-/build/
-/cfengine.dylib.dSYM/
-/cfengine.dylib
-bindings/python/tree_sitter_cfengine.egg-info/
-libtree-sitter-cfengine.a
-libtree-sitter-cfengine.dylib
-src/parser.o
-tree-sitter-cfengine.pc
+# Rust artifacts
+target/
+
+# Node artifacts
+build/
+prebuilds/
+node_modules/
+
+# Swift artifacts
+.build/
+
+# Go artifacts
+_obj/
+
+# Python artifacts
+.venv/
+dist/
+*.egg-info
+*.whl
+
+# C artifacts
+*.a
+*.so
+*.so.*
+*.dylib
+*.dylib.dSYM
+*.dll
+*.pc
+
+# Example dirs
+/examples/*/
+
+# Grammar volatiles
+*.wasm
+*.obj
+*.o
+# Archives
+*.tar.gz
+*.tgz
+*.zip
