@@ -82,7 +82,7 @@ dependencies = [
 
 [[package]]
 name = "tree-sitter-cfengine"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
  "cc",
  "tree-sitter",

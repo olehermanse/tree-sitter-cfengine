@@ -1,51 +1,53 @@
 {
   "name": "tree-sitter-cfengine",
-  "version": "1.0.1",
-  "description": "Tree sitter grammar for editor support / syntax highlighting of CFEngine policy files",
-  "author": "",
+  "version": "1.0.2",
+  "description": "CFEngine grammar for tree-sitter",
+  "repository": "github:olehermanse/tree-sitter-cfengine",
   "license": "MIT",
+  "author": "Ole Herman Schumacher Elgesem <oleherman93@gmail.com>",
+  "maintainers": [
+    "Ole Herman Schumacher Elgesem <oleherman93@gmail.com>"
+  ],
   "main": "bindings/node",
   "types": "bindings/node",
-  "scripts": {
-    "generate": "tree-sitter generate",
-    "install": "node-gyp-build",
-    "prebuildify": "prebuildify --napi --strip",
-    "parse": "tree-sitter parse example-file"
-  },
-  "tree-sitter": [
-    {
-      "scope": "source.cfengine",
-      "file-types": [
-        "cf"
-      ]
-    }
+  "keywords": [
+    "incremental",
+    "parsing",
+    "tree-sitter",
+    "c"
   ],
-  "repository": {
-    "type": "git",
-    "url": "github.com/olehermanse/tree-sitter-cfengine"
-  },
-  "dependencies": {
-    "node-addon-api": "^7.1.1",
-    "node-gyp-build": "^4.8.2"
-  },
-  "peerDependencies": {
-    "tree-sitter": "^0.21.1"
-  },
-  "peerDependenciesMeta": {
-    "tree_sitter": {
-      "optional": true
-    }
-  },
-  "devDependencies": {
-    "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.24.3"
-  },
   "files": [
     "grammar.js",
     "binding.gyp",
     "prebuilds/**",
     "bindings/node/*",
     "queries/*",
-    "src/**"
-  ]
+    "src/**",
+    "*.wasm"
+  ],
+  "dependencies": {
+    "node-addon-api": "^8.2.1",
+    "node-gyp-build": "^4.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.12.0",
+    "eslint-config-treesitter": "^1.0.2",
+    "prebuildify": "^6.0.1",
+    "tree-sitter-cli": "^0.24.3"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree-sitter": {
+      "optional": true
+    }
+  },
+  "scripts": {
+    "install": "node-gyp-build",
+    "lint": "eslint grammar.js",
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
+  }
 }

@@ -5,16 +5,19 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-cfengine"
 description = "CFEngine grammar for tree-sitter"
-version = "1.0.1"
-keywords = ["incremental", "parsing", "tree-sitter", "cfengine"]
+version = "1.0.2"
+keywords = ["incremental", "parsing", "tree-sitter", "c"]
 classifiers = [
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",
   "Topic :: Software Development :: Compilers",
   "Topic :: Text Processing :: Linguistic",
-  "Typing :: Typed"
+  "Typing :: Typed",
 ]
-requires-python = ">=3.8"
+authors = [
+  { name = "Ole Herman Schumacher Elgesem", email = "oleherman93@gmail.com" }
+]
+requires-python = ">=3.9"
 license.text = "MIT"
 readme = "README.md"
 
@@ -22,8 +25,8 @@ readme = "README.md"
 Homepage = "https://github.com/tree-sitter/tree-sitter-cfengine"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.21"]
+core = ["tree-sitter~=0.23"]
 
 [tool.cibuildwheel]
-build = "cp38-*"
+build = "cp39-*"
 build-frontend = "build"
