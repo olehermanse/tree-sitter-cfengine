@@ -6,6 +6,7 @@ on:
 
 jobs:
   github:
+    permissions: write-all
     uses: tree-sitter/workflows/.github/workflows/release.yml@main
   npm:
     uses: tree-sitter/workflows/.github/workflows/package-npm.yml@main
