@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-cfengine
 HOMEPAGE_URL := https://github.com/olehermanse/tree-sitter-cfengine
-VERSION := 1.0.5
+VERSION := 1.0.6
 
 # repository
 SRC_DIR := src
