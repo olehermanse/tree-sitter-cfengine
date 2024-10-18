@@ -18,7 +18,7 @@ class Formatter:
         self.buffer = ""
 
     def _write(self, message, end="\n"):
-        print(message, end=end)
+        # print(message, end=end)
         self.buffer += message + end
 
     def print_lines(self, lines, indent):
@@ -149,7 +149,7 @@ def stringify(node, indent):
         return attempt_split_attribute(node, indent)
     return [single_line]
 
-def tree_print(node, indent = 0):
+def autoformat(node, indent = 0):
     global fmt
     global macro_indent
     previous = fmt.update_previous(node)
@@ -177,7 +177,7 @@ def tree_print(node, indent = 0):
         return
     if (children):
         for child in children:
-            tree_print(child, indent)
+            autoformat(child, indent)
         return
     if (node.type in [",", ";"]):
         fmt.print_same_line(node)
@@ -185,12 +185,15 @@ def tree_print(node, indent = 0):
     fmt.print(node, indent)
 
 with open(sys.argv[1], "rb") as f:
-    data = f.read()
-tree = parser.parse(data)
+    original_data = f.read()
+tree = parser.parse(original_data)
 
 root_node = tree.root_node
 assert root_node.type == 'source_file'
-tree_print(root_node)
-print("")
-with open(sys.argv[1], "w") as f:
-    f.write(fmt.buffer + "\n")
+autoformat(root_node)
+
+new_data = fmt.buffer + "\n"
+if new_data != original_data.decode("utf-8"):
+    with open(sys.argv[1], "w") as f:
+        f.write(new_data)
+    print("1 file reformatted")
