@@ -10,9 +10,9 @@
     }
   ],
   "metadata": {
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": "MIT",
-    "description": "Grammar for parsing CFEngine policy language",
+    "description": "CFEngine grammar for tree-sitter",
     "authors": [
       {
         "name": "Ole Herman Schumacher Elgesem",
