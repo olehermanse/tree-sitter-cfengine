@@ -31,3 +31,10 @@ https://tree-sitter.github.io/tree-sitter/creating-parsers
 Inspired by Lars Erik Wik's initial implementation available here:
 
 https://github.com/larsewi/tree-sitter-cfengine
+
+
+## Run containerized tests locally:
+
+```
+docker build --tag tree-sitter-cfengine .
+```
