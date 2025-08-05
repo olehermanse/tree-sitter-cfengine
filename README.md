@@ -38,3 +38,36 @@ https://github.com/larsewi/tree-sitter-cfengine
 ```
 docker build --tag tree-sitter-cfengine .
 ```
+
+## Making changes
+
+After making changes to `grammar.js`, run the the commands below to generate, build, and test:
+
+```
+tree-sitter generate && tree-sitter build && tree-sitter test
+```
+
+In tree-sitter projects, it is normal to commit the files generated / edited by the tree-sitter tooling.
+Once it is working and tests are passing, commit the changes (including `src/` folder with generated files).
+
+## Creating a new release
+
+Creating a release in GitHub **will not work**.
+To create a new release, you need to make a commit and tag locally, and push it.
+First ensure you have a clean git repo without any uncommitted changes.
+Then, run the following commands:
+
+```
+tree-sitter version 1.2.3
+git add -A
+git commit -S -s -m "Bump to version 1.2.3"
+git tag -s -a 1.2.3 -m 1.2.3
+git push --tags
+```
+
+GitHub Actions will start when a tag is pushed, and the action will create the "Release" in GitHub, as well as pypi, npm, and crates.io:
+
+- https://github.com/olehermanse/tree-sitter-cfengine/releases
+- https://pypi.org/project/tree-sitter-cfengine
+- https://www.npmjs.com/package/tree-sitter-cfengine
+- https://crates.io/crates/tree-sitter-cfengine
