@@ -39,3 +39,5 @@ dist/
 *.tar.gz
 *.tgz
 *.zip
+
+__pycache__
