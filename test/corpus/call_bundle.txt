@@ -24,6 +24,7 @@ bundle agent main
           (attribute
             (attribute_name)
             (call
-              (calling_identifier)
+              (calling_identifier
+                (qualified_identifier))
               (quoted_string)
               (quoted_string))))))))

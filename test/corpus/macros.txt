@@ -57,10 +57,12 @@ bundle agent my_bundle
           (attribute
             (attribute_name)
             (call
-              (calling_identifier)
+              (calling_identifier
+                (qualified_identifier))
               (qualified_identifier)
               (call
-                (calling_identifier)
+                (calling_identifier
+                  (qualified_identifier))
                 (quoted_string)))))
         (macro)
         (half_promise

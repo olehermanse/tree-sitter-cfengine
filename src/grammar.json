@@ -480,17 +480,25 @@
         }
       ]
     },
+    "calling_identifier": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "qualified_identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dollar_expression"
+        }
+      ]
+    },
     "call": {
       "type": "SEQ",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "qualified_identifier"
-          },
-          "named": true,
-          "value": "calling_identifier"
+          "type": "SYMBOL",
+          "name": "calling_identifier"
         },
         {
           "type": "STRING",
@@ -839,5 +847,6 @@
   "precedences": [],
   "externals": [],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }

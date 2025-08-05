@@ -127,9 +127,14 @@ module.exports = grammar({
         alias(")", $.at_expression_end),
       ),
 
+    calling_identifier: ($) => choice(
+      $.qualified_identifier,
+      $.dollar_expression, // TODO: This is only allowed for bundles / methods calls
+                           //       NOT for function or body calls
+    ),
     call: ($) =>
       seq(
-        alias($.qualified_identifier, $.calling_identifier),
+        $.calling_identifier,
         "(",
         optional($._value_list),
         ")",
