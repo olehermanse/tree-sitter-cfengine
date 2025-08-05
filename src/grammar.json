@@ -585,33 +585,25 @@
       ]
     },
     "class_guarded_promises": {
-      "type": "PREC_RIGHT",
-      "value": 1,
-      "content": {
-        "type": "SEQ",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "class_guard"
-          },
-          {
-            "type": "PREC",
-            "value": 1,
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "_promises"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "class_guard"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_promises"
+            },
+            {
+              "type": "BLANK"
             }
-          }
-        ]
-      }
+          ]
+        }
+      ]
     },
     "_promises": {
       "type": "SEQ",
@@ -787,7 +779,7 @@
     },
     "quoted_string": {
       "type": "PATTERN",
-      "value": "\\\"((\\\\(.|\\n))|[^\"\\\\])*\\\"|\\'((\\\\(.|\\n))|[^'\\\\])*\\'|`[^`]*`"
+      "value": "(\\'((\\\\(.|\\n))|[^'\\\\])*\\')|(\\\"((\\\\(.|\\n))|[^\"\\\\])*\\\")|(`[^`]*`)"
     },
     "identifier": {
       "type": "PATTERN",
@@ -803,7 +795,7 @@
     },
     "class_guard": {
       "type": "PATTERN",
-      "value": "[.|&!()a-zA-Z0-9_:][\\t .|&!()a-zA-Z0-9_:]*::"
+      "value": "(((\\'((\\\\(.|\\n))|[^'\\\\])*\\')|(\\\"((\\\\(.|\\n))|[^\"\\\\])*\\\")|(`[^`]*`))|([.|&!()a-zA-Z0-9_:][\\t .|&!()a-zA-Z0-9_:]*))::"
     },
     "comment": {
       "type": "TOKEN",

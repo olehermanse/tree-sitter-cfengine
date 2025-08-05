@@ -41,3 +41,29 @@ bundle agent my_bundle
             (promiser)))
         (class_guarded_promises
           (class_guard))))))
+
+==================
+Quoted class guards
+==================
+
+bundle agent my_bundle
+{
+  reports:
+    "$(var)"::
+      "Brrap";
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
+      (bundle_section
+        (promise_guard)
+        (class_guarded_promises
+          (class_guard)
+          (promise
+            (promiser)))))))

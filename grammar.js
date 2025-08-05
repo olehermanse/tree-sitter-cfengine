@@ -4,6 +4,17 @@
  * @license MIT
  */
 
+// Regexes defined here so we can concatenate them without creating rules in the grammar;
+const IDENTIFIER = /[a-zA-Z0-9_]+/;
+const QUALIFIED_IDENTIFIER = /([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+/;
+const PROMISE_GUARD = /[a-zA-Z_]+:/;
+const CLASS_EXPRESSION = /[.|&!()a-zA-Z0-9_:][\t .|&!()a-zA-Z0-9_:]*/;
+const SQUOTE = /\'((\\(.|\n))|[^'\\])*\'/;
+const DQUOTE = /\"((\\(.|\n))|[^"\\])*\"/;
+const BQUOTE = /`[^`]*`/;
+const QUOTED_STRING = RegExp('(' + SQUOTE.source + ')|(' + DQUOTE.source + ')|(' + BQUOTE.source + ')');
+const CLASS_GUARD = RegExp('((' + QUOTED_STRING.source + ')|(' + CLASS_EXPRESSION.source + '))::');
+
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
@@ -149,7 +160,7 @@ module.exports = grammar({
       seq($._right_value, repeat(seq(",", $._right_value)), optional(",")),
 
     class_guarded_promises: ($) =>
-      prec.right(1, seq($.class_guard, prec(1, optional($._promises)))),
+      seq($.class_guard, optional($._promises)),
 
     _promises: ($) => seq($.promise, repeat(choice($.promise, $.half_promise))),
 
@@ -174,16 +185,11 @@ module.exports = grammar({
     attribute: ($) =>
       seq(alias($.identifier, $.attribute_name), "=>", $._right_value),
 
-    quoted_string: ($) =>
-      /\"((\\(.|\n))|[^"\\])*\"|\'((\\(.|\n))|[^'\\])*\'|`[^`]*`/,
-
-    identifier: ($) => /[a-zA-Z0-9_]+/,
-    qualified_identifier: ($) =>
-      /([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+/,
-
-    promise_guard: ($) => /[a-zA-Z_]+:/,
-
-    class_guard: ($) => /[.|&!()a-zA-Z0-9_:][\t .|&!()a-zA-Z0-9_:]*::/,
+    quoted_string: ($) => QUOTED_STRING,
+    identifier: ($) => IDENTIFIER,
+    qualified_identifier: ($) => QUALIFIED_IDENTIFIER,
+    promise_guard: ($) => PROMISE_GUARD,
+    class_guard: ($) => CLASS_GUARD,
 
     comment: ($) => token(seq("#", /.*/)),
 
