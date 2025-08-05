@@ -183,8 +183,15 @@ module.exports = grammar({
 
     promise_guard: ($) => /[a-zA-Z_]+:/,
 
-    class_guard: ($) => /[.|&!()a-zA-Z0-9_:][\t .|&!()a-zA-Z0-9_:]*::/,
-
+    class_expression: ($) => /[.|&!()a-zA-Z0-9_:][\t .|&!()a-zA-Z0-9_:]*/,
+    class_guard: ($) =>
+      seq(
+        choice(
+          $.class_expression,
+          $.quoted_string,
+        ),
+        "::",
+      ),
     comment: ($) => token(seq("#", /.*/)),
 
     macro: ($) => token(/@(if |else|endif)[^\n]*/),
