@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-cfengine",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "CFEngine grammar for tree-sitter",
   "repository": "github:tree-sitter/tree-sitter-cfengine",
   "license": "MIT",
