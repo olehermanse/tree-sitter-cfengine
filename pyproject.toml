@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-cfengine"
 description = "CFEngine grammar for tree-sitter"
-version = "1.0.11"
+version = "1.0.12"
 keywords = ["incremental", "parsing", "tree-sitter", "cfengine"]
 classifiers = [
   "Intended Audience :: Developers",
