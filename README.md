@@ -75,6 +75,7 @@ git push --tags
 
 GitHub Actions will start when a tag is pushed, and the action will create the "Release" in GitHub, as well as pypi, npm, and crates.io:
 
+- https://github.com/olehermanse/tree-sitter-cfengine/actions
 - https://github.com/olehermanse/tree-sitter-cfengine/releases
 - https://pypi.org/project/tree-sitter-cfengine
 - https://www.npmjs.com/package/tree-sitter-cfengine
