@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-cfengine
-        VERSION "1.1.2"
+        VERSION "1.1.3"
         DESCRIPTION "CFEngine grammar for tree-sitter"
         HOMEPAGE_URL "https://github.com/olehermanse/tree-sitter-cfengine"
         LANGUAGES C)
