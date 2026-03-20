@@ -10,8 +10,9 @@ jobs:
     uses: tree-sitter/workflows/.github/workflows/release.yml@main
   npm:
     uses: tree-sitter/workflows/.github/workflows/package-npm.yml@main
-    secrets:
-      NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+    permissions:
+      id-token: write  # Required for OIDC
+      contents: read
   crates:
     uses: tree-sitter/workflows/.github/workflows/package-crates.yml@main
     secrets:
