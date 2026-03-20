@@ -50,6 +50,12 @@ tree-sitter generate && tree-sitter build && tree-sitter test
 In tree-sitter projects, it is normal to commit the files generated / edited by the tree-sitter tooling.
 Once it is working and tests are passing, commit the changes (including `src/` folder with generated files).
 
+## Updating dependencies
+
+```bash
+npm update --save && cargo update && uv sync --upgrade
+```
+
 ## Creating a new release
 
 Creating a release in GitHub **will not work**.
@@ -58,10 +64,10 @@ First ensure you have a clean git repo without any uncommitted changes.
 Then, run the following commands:
 
 ```
-tree-sitter version 1.2.3
-git add -A
-git commit -S -s -m "Bump to version 1.2.3"
-git tag -s -a 1.2.3 -m 1.2.3
+export PUBLISH_VERSION="1.2.3"
+tree-sitter version $PUBLISH_VERSION
+npm update --save && cargo update && uv sync --upgrade
+git add -A && git commit -S -s -m "Bump to version $PUBLISH_VERSION" && git tag -s -a $PUBLISH_VERSION -m $PUBLISH_VERSION
 git push --tags
 ```
 
