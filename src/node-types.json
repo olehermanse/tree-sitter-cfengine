@@ -343,15 +343,34 @@
           "named": true
         },
         {
-          "type": "dollar_expression_identifier",
-          "named": true
-        },
-        {
           "type": "dollar_expression_operator",
           "named": true
         },
         {
+          "type": "dollar_expression_reference",
+          "named": true
+        },
+        {
           "type": "dollar_expression_start",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dollar_expression_reference",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "indexed_identifier",
+          "named": true
+        },
+        {
+          "type": "qualified_identifier",
           "named": true
         }
       ]
@@ -625,10 +644,6 @@
   },
   {
     "type": "dollar_expression_end",
-    "named": true
-  },
-  {
-    "type": "dollar_expression_identifier",
     "named": true
   },
   {

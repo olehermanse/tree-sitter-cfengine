@@ -430,10 +430,10 @@
               "type": "ALIAS",
               "content": {
                 "type": "SYMBOL",
-                "name": "qualified_identifier"
+                "name": "_variable_reference"
               },
               "named": true,
-              "value": "dollar_expression_identifier"
+              "value": "dollar_expression_reference"
             },
             {
               "type": "SYMBOL",
