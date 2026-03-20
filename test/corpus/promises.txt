@@ -1,0 +1,108 @@
+==================
+Promise attributes
+==================
+
+bundle agent main
+{
+  vars:
+    "foo"
+      string => "bar",
+      if => "any";
+
+  reports:
+    "Hello, world!";
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser)
+          (attribute
+            (attribute_name)
+            (quoted_string))
+          (attribute
+            (attribute_name)
+            (quoted_string))))
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser))))))
+
+==================
+Promise type definitions (promise blocks)
+==================
+promise agent my_promise_type
+{
+  path => "/a/b/c";
+  linux::
+    interpreter => "/d/e/f";
+  windows::
+    interpreter => "/g/h/i";
+}
+
+---
+
+(source_file
+  (promise_block
+    (promise_block_keyword)
+    (promise_block_type)
+    (promise_block_name)
+    (promise_block_body
+      (attribute
+        (attribute_name)
+        (quoted_string))
+      (class_guarded_promise_block_attributes
+        (class_guard)
+        (attribute
+          (attribute_name)
+          (quoted_string)))
+      (class_guarded_promise_block_attributes
+        (class_guard)
+        (attribute
+          (attribute_name)
+          (quoted_string))))))
+
+==================
+Qualified identifier
+==================
+
+bundle agent main
+{
+  classes:
+    "my_class";
+  vars:
+    "foo"
+      string => "bar",
+      if => default:main.my_class;
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser)))
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser)
+          (attribute
+            (attribute_name)
+            (quoted_string))
+          (attribute
+            (attribute_name)
+            (qualified_identifier)))))))

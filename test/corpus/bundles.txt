@@ -1,0 +1,74 @@
+==================
+Bundle parameters
+==================
+
+bundle agent my_bundle(one, two, three)
+{
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (parameter_list
+      (parameter)
+      (parameter)
+      (parameter))
+    (bundle_block_body)))
+
+==================
+Empty bundle
+==================
+
+bundle agent my_bundle {}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body)))
+
+==================
+Empty argument list
+==================
+
+bundle agent my_bundle()
+{
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (parameter_list)
+    (bundle_block_body)))
+
+==================
+Trailing comma in parameter list
+==================
+
+bundle agent my_bundle(one, two, three,)
+{
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (parameter_list
+      (parameter)
+      (parameter)
+      (parameter))
+    (bundle_block_body)))
