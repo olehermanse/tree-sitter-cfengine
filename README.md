@@ -61,16 +61,10 @@ npm update --save && cargo update && uv sync --upgrade
 Creating a release in GitHub **will not work**.
 To create a new release, you need to make a commit and tag locally, and push it.
 First ensure you have a clean git repo without any uncommitted changes.
-Then, run the following commands:
+Then, run the releas script:
 
 ```
-export PUBLISH_VERSION="1.2.3"
-tree-sitter version $PUBLISH_VERSION
-tree-sitter generate && tree-sitter build && tree-sitter test
-npm update --save && cargo update && uv sync --upgrade
-tree-sitter generate && tree-sitter build && tree-sitter test
-git add -A && git commit -S -s -m "Bump to version $PUBLISH_VERSION" && git tag -s -a $PUBLISH_VERSION -m $PUBLISH_VERSION
-git push --tags
+bash release.sh 1.2.3
 ```
 
 GitHub Actions will start when a tag is pushed, and the action will create the "Release" in GitHub, as well as pypi, npm, and crates.io:
