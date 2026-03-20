@@ -9,10 +9,20 @@ jobs:
     permissions: write-all
     uses: tree-sitter/workflows/.github/workflows/release.yml@main
   npm:
-    uses: tree-sitter/workflows/.github/workflows/package-npm.yml@main
     permissions:
       id-token: write  # Required for OIDC
       contents: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - run: npm publish
   crates:
     uses: tree-sitter/workflows/.github/workflows/package-crates.yml@main
     secrets:
