@@ -7,6 +7,8 @@
 // Regexes defined here so we can concatenate them without creating rules in the grammar;
 const IDENTIFIER = /[a-zA-Z0-9_]+/;
 const QUALIFIED_IDENTIFIER = /([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+/;
+const INDEX = /\[([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+\]/;
+const INDEXED_IDENTIFIER = RegExp('(' + QUALIFIED_IDENTIFIER.source + ')(' + INDEX.source + ')+');
 const PROMISE_GUARD = /[a-zA-Z_]+:/;
 const CLASS_EXPRESSION = /[.|&!()a-zA-Z0-9_:][\t .|&!()a-zA-Z0-9_:]*/;
 const SQUOTE = /\'((\\(.|\n))|[^'\\])*\'/;
@@ -120,6 +122,11 @@ module.exports = grammar({
         $.at_expression,
       ),
 
+    _variable_reference: ($) => choice(
+        $.qualified_identifier,
+        $.indexed_identifier,
+      ),
+
     dollar_expression: ($) =>
       seq(
         alias("$", $.dollar_expression_operator),
@@ -134,7 +141,7 @@ module.exports = grammar({
       seq(
         alias("@", $.at_expression_operator),
         alias("(", $.at_expression_start),
-        alias($.qualified_identifier, $.at_expression_identifier),
+        alias($._variable_reference, $.at_expression_reference),
         alias(")", $.at_expression_end),
       ),
 
@@ -188,6 +195,7 @@ module.exports = grammar({
     quoted_string: ($) => QUOTED_STRING,
     identifier: ($) => IDENTIFIER,
     qualified_identifier: ($) => QUALIFIED_IDENTIFIER,
+    indexed_identifier: ($) => INDEXED_IDENTIFIER,
     promise_guard: ($) => PROMISE_GUARD,
     class_guard: ($) => CLASS_GUARD,
 

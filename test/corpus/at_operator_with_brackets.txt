@@ -1,0 +1,36 @@
+==================
+At operator with brackets
+==================
+
+bundle agent main
+{
+  vars:
+    enabled::
+      "remotes" slist => getindices( @(data[remote_hubs]) );
+}
+---
+
+(source_file
+    (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
+        (bundle_section
+        (promise_guard)
+        (class_guarded_promises
+            (class_guard)
+            (promise
+            (promiser)
+            (attribute
+                (attribute_name)
+                (call
+                (calling_identifier
+                    (qualified_identifier))
+                (at_expression
+                    (at_expression_operator)
+                    (at_expression_start)
+                    (at_expression_reference
+                        (variable_identifier)
+                        (index))
+                      (at_expression_end))))))))))
