@@ -132,7 +132,7 @@ module.exports = grammar({
         alias("$", $.dollar_expression_operator),
         alias("(", $.dollar_expression_start),
         choice(
-          alias($.qualified_identifier, $.dollar_expression_identifier),
+          alias($._variable_reference, $.dollar_expression_reference),
           $.dollar_expression,
         ),
         alias(")", $.dollar_expression_end),

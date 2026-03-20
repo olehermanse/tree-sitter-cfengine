@@ -1,5 +1,5 @@
 ==================
-At operator with brackets
+Indexing with @ operator
 ==================
 
 bundle agent main
@@ -33,3 +33,35 @@ bundle agent main
                     (at_expression_reference
                         (indexed_identifier))
                       (at_expression_end))))))))))
+
+==================
+Indexing with $ operator
+==================
+
+bundle agent main
+{
+  vars:
+    "dmi"
+      string => $(bios_array[1]);
+}
+
+---
+
+(source_file
+    (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
+        (bundle_section
+        (promise_guard)
+        (promise
+            (promiser)
+            (attribute
+            (attribute_name)
+            (dollar_expression
+                (dollar_expression_operator)
+                (dollar_expression_start)
+                (dollar_expression_reference
+                (indexed_identifier))
+                (dollar_expression_end))))))))
