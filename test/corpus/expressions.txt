@@ -30,7 +30,7 @@ bundle agent main
                 (at_expression_operator)
                 (at_expression_start)
                 (at_expression_reference
-                  (variable_identifier))
+                  (qualified_identifier))
                 (at_expression_end)))))
         (promise
           (promiser)

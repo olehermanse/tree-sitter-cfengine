@@ -31,6 +31,5 @@ bundle agent main
                     (at_expression_operator)
                     (at_expression_start)
                     (at_expression_reference
-                        (variable_identifier)
-                        (index))
+                        (indexed_identifier))
                       (at_expression_end))))))))))
