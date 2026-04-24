@@ -6,16 +6,23 @@
 
 // Regexes defined here so we can concatenate them without creating rules in the grammar;
 const IDENTIFIER = /[a-zA-Z0-9_]+/;
-const QUALIFIED_IDENTIFIER = /([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+/;
+const QUALIFIED_IDENTIFIER =
+  /([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+/;
 const INDEX = /\[([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+\]/;
-const INDEXED_IDENTIFIER = RegExp('(' + QUALIFIED_IDENTIFIER.source + ')(' + INDEX.source + ')+');
+const INDEXED_IDENTIFIER = RegExp(
+  "(" + QUALIFIED_IDENTIFIER.source + ")(" + INDEX.source + ")+",
+);
 const PROMISE_GUARD = /[a-zA-Z_]+:/;
 const CLASS_EXPRESSION = /[.|&!()a-zA-Z0-9_:][\t .|&!()a-zA-Z0-9_:]*/;
 const SQUOTE = /\'((\\(.|\n))|[^'\\])*\'/;
 const DQUOTE = /\"((\\(.|\n))|[^"\\])*\"/;
 const BQUOTE = /`[^`]*`/;
-const QUOTED_STRING = RegExp('(' + SQUOTE.source + ')|(' + DQUOTE.source + ')|(' + BQUOTE.source + ')');
-const CLASS_GUARD = RegExp('((' + QUOTED_STRING.source + ')|(' + CLASS_EXPRESSION.source + '))::');
+const QUOTED_STRING = RegExp(
+  "(" + SQUOTE.source + ")|(" + DQUOTE.source + ")|(" + BQUOTE.source + ")",
+);
+const CLASS_GUARD = RegExp(
+  "((" + QUOTED_STRING.source + ")|(" + CLASS_EXPRESSION.source + "))::",
+);
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
@@ -112,7 +119,7 @@ module.exports = grammar({
         repeat($.class_guarded_promises),
       ),
 
-    _right_value: ($) =>
+    _bare_value: ($) =>
       choice(
         $.quoted_string,
         $.qualified_identifier,
@@ -122,10 +129,14 @@ module.exports = grammar({
         $.at_expression,
       ),
 
-    _variable_reference: ($) => choice(
-        $.qualified_identifier,
-        $.indexed_identifier,
-      ),
+    // An rval is normally a bare value,
+    // but because of macros it can also end up being 2 bare values
+    // without a comma between them. (One in each branch of the macro).
+    _right_value: ($) =>
+      choice($._bare_value, seq($._bare_value, $._bare_value)),
+
+    _variable_reference: ($) =>
+      choice($.qualified_identifier, $.indexed_identifier),
 
     dollar_expression: ($) =>
       seq(
@@ -145,18 +156,13 @@ module.exports = grammar({
         alias(")", $.at_expression_end),
       ),
 
-    calling_identifier: ($) => choice(
-      $.qualified_identifier,
-      $.dollar_expression, // TODO: This is only allowed for bundles / methods calls
-                           //       NOT for function or body calls
-    ),
-    call: ($) =>
-      seq(
-        $.calling_identifier,
-        "(",
-        optional($._value_list),
-        ")",
+    calling_identifier: ($) =>
+      choice(
+        $.qualified_identifier,
+        $.dollar_expression, // TODO: This is only allowed for bundles / methods calls
+        //       NOT for function or body calls
       ),
+    call: ($) => seq($.calling_identifier, "(", optional($._value_list), ")"),
 
     list: ($) => seq("{", optional($._value_list), "}"),
 
@@ -166,8 +172,10 @@ module.exports = grammar({
     _value_list: ($) =>
       seq($._right_value, repeat(seq(",", $._right_value)), optional(",")),
 
-    class_guarded_promises: ($) =>
-      seq($.class_guard, optional($._promises)),
+    //
+    _double_value: ($) => seq($._right_value, $._right_value),
+
+    class_guarded_promises: ($) => seq($.class_guard, optional($._promises)),
 
     _promises: ($) => seq($.promise, repeat(choice($.promise, $.half_promise))),
 

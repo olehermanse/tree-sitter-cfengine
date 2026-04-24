@@ -1,0 +1,68 @@
+==================
+Double values without commas (inside macros)
+==================
+
+bundle agent bundle_a
+{
+  vars:
+    "name"
+      slist => {
+@if minimum_version(3.24)
+        "a"
+@else
+        "b"
+@endif
+      };
+}
+
+
+bundle agent bundle_b
+{
+  vars:
+    "name"
+      string =>
+@if minimum_version(3.24)
+        "a"
+@else
+        "b"
+@endif
+      ;
+}
+
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
+      (bundle_section
+        (promise_guard)
+        (promise
+          (promiser)
+          (attribute
+            (attribute_name)
+            (list
+              (macro)
+              (quoted_string)
+              (macro)
+              (quoted_string)
+            (macro)))))))
+      (bundle_block
+        (bundle_block_keyword)
+        (bundle_block_type)
+        (bundle_block_name)
+        (bundle_block_body
+          (bundle_section
+            (promise_guard)
+            (promise
+              (promiser)
+              (attribute
+                (attribute_name)
+                (macro)
+                (quoted_string)
+                (macro)
+                (quoted_string))
+              (macro))))))
