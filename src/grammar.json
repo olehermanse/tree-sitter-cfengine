@@ -360,7 +360,7 @@
         }
       ]
     },
-    "_right_value": {
+    "_bare_value": {
       "type": "CHOICE",
       "members": [
         {
@@ -386,6 +386,28 @@
         {
           "type": "SYMBOL",
           "name": "at_expression"
+        }
+      ]
+    },
+    "_right_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_bare_value"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_bare_value"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_bare_value"
+            }
+          ]
         }
       ]
     },
@@ -594,6 +616,19 @@
               "type": "BLANK"
             }
           ]
+        }
+      ]
+    },
+    "_double_value": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_right_value"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_right_value"
         }
       ]
     },
