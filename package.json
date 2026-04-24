@@ -29,7 +29,7 @@
     "*.wasm"
   ],
   "dependencies": {
-    "node-addon-api": "^8.6.0",
+    "node-addon-api": "^8.7.0",
     "node-gyp-build": "^4.8.4"
   },
   "peerDependencies": {
@@ -39,7 +39,7 @@
     "eslint": "9.12.0",
     "eslint-config-treesitter": "^1.0.2",
     "prebuildify": "^6.0.1",
-    "tree-sitter-cli": "^0.26.7"
+    "tree-sitter-cli": "^0.26.8"
   },
   "peerDependenciesMeta": {
     "tree-sitter": {
