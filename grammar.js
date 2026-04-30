@@ -139,21 +139,40 @@ module.exports = grammar({
       choice($.qualified_identifier, $.indexed_identifier),
 
     dollar_expression: ($) =>
-      seq(
-        alias("$", $.dollar_expression_operator),
-        alias("(", $.dollar_expression_start),
-        choice(
-          alias($._variable_reference, $.dollar_expression_reference),
-          $.dollar_expression,
+      choice(
+        seq(
+          alias("$", $.dollar_expression_operator),
+          alias("(", $.dollar_expression_start),
+          choice(
+            alias($._variable_reference, $.dollar_expression_reference),
+            $.dollar_expression,
+          ),
+          alias(")", $.dollar_expression_end),
         ),
-        alias(")", $.dollar_expression_end),
+        seq(
+          alias("$", $.dollar_expression_operator),
+          alias("{", $.dollar_expression_start),
+          choice(
+            alias($._variable_reference, $.dollar_expression_reference),
+            $.dollar_expression,
+          ),
+          alias("}", $.dollar_expression_end),
+        ),
       ),
     at_expression: ($) =>
-      seq(
-        alias("@", $.at_expression_operator),
-        alias("(", $.at_expression_start),
-        alias($._variable_reference, $.at_expression_reference),
-        alias(")", $.at_expression_end),
+      choice(
+        seq(
+          alias("@", $.at_expression_operator),
+          alias("(", $.at_expression_start),
+          alias($._variable_reference, $.at_expression_reference),
+          alias(")", $.at_expression_end),
+        ),
+        seq(
+          alias("@", $.at_expression_operator),
+          alias("{", $.at_expression_start),
+          alias($._variable_reference, $.at_expression_reference),
+          alias("}", $.at_expression_end),
+        ),
       ),
 
     calling_identifier: ($) =>
