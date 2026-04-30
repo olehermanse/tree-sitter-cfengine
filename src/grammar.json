@@ -425,29 +425,134 @@
       ]
     },
     "dollar_expression": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "$"
-          },
-          "named": true,
-          "value": "dollar_expression_operator"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "("
-          },
-          "named": true,
-          "value": "dollar_expression_start"
-        },
-        {
-          "type": "CHOICE",
+          "type": "SEQ",
           "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "$"
+              },
+              "named": true,
+              "value": "dollar_expression_operator"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "("
+              },
+              "named": true,
+              "value": "dollar_expression_start"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_variable_reference"
+                  },
+                  "named": true,
+                  "value": "dollar_expression_reference"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "dollar_expression"
+                }
+              ]
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": ")"
+              },
+              "named": true,
+              "value": "dollar_expression_end"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "$"
+              },
+              "named": true,
+              "value": "dollar_expression_operator"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "{"
+              },
+              "named": true,
+              "value": "dollar_expression_start"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "_variable_reference"
+                  },
+                  "named": true,
+                  "value": "dollar_expression_reference"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "dollar_expression"
+                }
+              ]
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "}"
+              },
+              "named": true,
+              "value": "dollar_expression_end"
+            }
+          ]
+        }
+      ]
+    },
+    "at_expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "@"
+              },
+              "named": true,
+              "value": "at_expression_operator"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "("
+              },
+              "named": true,
+              "value": "at_expression_start"
+            },
             {
               "type": "ALIAS",
               "content": {
@@ -455,63 +560,59 @@
                 "name": "_variable_reference"
               },
               "named": true,
-              "value": "dollar_expression_reference"
+              "value": "at_expression_reference"
             },
             {
-              "type": "SYMBOL",
-              "name": "dollar_expression"
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": ")"
+              },
+              "named": true,
+              "value": "at_expression_end"
             }
           ]
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": ")"
-          },
-          "named": true,
-          "value": "dollar_expression_end"
-        }
-      ]
-    },
-    "at_expression": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "@"
-          },
-          "named": true,
-          "value": "at_expression_operator"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": "("
-          },
-          "named": true,
-          "value": "at_expression_start"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_variable_reference"
-          },
-          "named": true,
-          "value": "at_expression_reference"
-        },
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "STRING",
-            "value": ")"
-          },
-          "named": true,
-          "value": "at_expression_end"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "@"
+              },
+              "named": true,
+              "value": "at_expression_operator"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "{"
+              },
+              "named": true,
+              "value": "at_expression_start"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_variable_reference"
+              },
+              "named": true,
+              "value": "at_expression_reference"
+            },
+            {
+              "type": "ALIAS",
+              "content": {
+                "type": "STRING",
+                "value": "}"
+              },
+              "named": true,
+              "value": "at_expression_end"
+            }
+          ]
         }
       ]
     },
