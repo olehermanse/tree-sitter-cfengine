@@ -88,6 +88,117 @@ bundle agent main
                 (qualified_identifier))
               (dollar_expression_end))))))))
 
+==================
+Curly braces continued
+==================
+
+bundle agent main
+{
+  vars:
+    "b1" string => "foo";
+    "${b1}"
+      usebundle => ${b1};
+}
+
+bundle edit_line test_delete(str, match)
+{
+  delete_lines:
+    "$(str)"
+      delete_select => test_match(@{match}),
+      select_region => test_select;
+}
+
+body select_region test_select
+{
+  select_start => "BEGIN";
+  select_end => "END";
+}
+
+
+body delete_select test_match(m)
+{
+  delete_if_not_startwith_from_list => { @{m} };
+}
+
+---
+
+(source_file
+  (bundle_block
+  (bundle_block_keyword)
+  (bundle_block_type)
+  (bundle_block_name)
+  (bundle_block_body
+    (bundle_section
+    (promise_guard)
+    (promise
+      (promiser)
+      (attribute
+      (attribute_name)
+      (quoted_string)))
+    (promise
+      (promiser)
+      (attribute
+      (attribute_name)
+      (dollar_expression
+        (dollar_expression_operator)
+        (dollar_expression_start)
+        (dollar_expression_reference
+        (qualified_identifier))
+        (dollar_expression_end)))))))
+  (bundle_block
+  (bundle_block_keyword)
+  (bundle_block_type)
+  (bundle_block_name)
+  (parameter_list
+    (parameter)
+    (parameter))
+  (bundle_block_body
+    (bundle_section
+    (promise_guard)
+    (promise
+      (promiser)
+      (attribute
+      (attribute_name)
+      (call
+        (calling_identifier
+        (qualified_identifier))
+        (at_expression
+        (at_expression_operator)
+        (at_expression_start)
+        (at_expression_reference
+          (qualified_identifier))
+        (at_expression_end))))
+      (attribute
+      (attribute_name)
+      (qualified_identifier))))))
+  (body_block
+  (body_block_keyword)
+  (body_block_type)
+  (body_block_name)
+  (body_block_body
+    (attribute
+    (attribute_name)
+    (quoted_string))
+    (attribute
+    (attribute_name)
+    (quoted_string))))
+  (body_block
+  (body_block_keyword)
+  (body_block_type)
+  (body_block_name)
+  (parameter_list
+    (parameter))
+  (body_block_body
+    (attribute
+    (attribute_name)
+    (list
+      (at_expression
+      (at_expression_operator)
+      (at_expression_start)
+      (at_expression_reference
+        (qualified_identifier))
+      (at_expression_end)))))))
+
 
 ==================
 Double expand - Recursive dollar expression
