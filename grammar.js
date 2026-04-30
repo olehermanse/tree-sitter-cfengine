@@ -8,10 +8,6 @@
 const IDENTIFIER = /[a-zA-Z0-9_]+/;
 const QUALIFIED_IDENTIFIER =
   /([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+/;
-const INDEX = /\[([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+\]/;
-const INDEXED_IDENTIFIER = RegExp(
-  '(' + QUALIFIED_IDENTIFIER.source + ')(' + INDEX.source + ')+',
-);
 const PROMISE_GUARD = /[a-zA-Z_]+:/;
 const CLASS_EXPRESSION = /[.|&!()a-zA-Z0-9_:][\t .|&!()a-zA-Z0-9_:]*/;
 const SQUOTE = /\'((\\(.|\n))|[^'\\])*\'/;
@@ -178,8 +174,7 @@ module.exports = grammar({
     calling_identifier: ($) =>
       choice(
         $.qualified_identifier,
-        $.dollar_expression, // TODO: This is only allowed for bundles / methods calls
-        //       NOT for function or body calls
+        $.dollar_expression,
       ),
     call: ($) => seq($.calling_identifier, '(', optional($._value_list), ')'),
 
@@ -218,11 +213,24 @@ module.exports = grammar({
 
     attribute: ($) =>
       seq(alias($.identifier, $.attribute_name), '=>', $._right_value),
+    index: ($) =>
+      seq(
+        '[',
+        choice(
+          $.identifier,
+          $.dollar_expression
+        ),
+        ']'
+      ),
+    indexed_identifier: ($) =>
+      seq(
+        $.qualified_identifier,
+        $.index
+      ),
 
     quoted_string: ($) => QUOTED_STRING,
     identifier: ($) => IDENTIFIER,
     qualified_identifier: ($) => QUALIFIED_IDENTIFIER,
-    indexed_identifier: ($) => INDEXED_IDENTIFIER,
     promise_guard: ($) => PROMISE_GUARD,
     class_guard: ($) => CLASS_GUARD,
 

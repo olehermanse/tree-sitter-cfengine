@@ -235,3 +235,76 @@ bundle agent main
                   (qualified_identifier))
                 (dollar_expression_end))
               (dollar_expression_end))))))))
+
+==================
+Recursive curly expansions with calling
+==================
+
+bundle agent test
+{
+  methods:
+      "${b1}"
+        usebundle => ${b1};
+      "${b[b2]}"
+        usebundle => ${b[b2]}("param");
+      "${b[b2]}"
+        usebundle => ${b[${b2}]}("param2");
+}
+
+---
+
+(source_file
+  (bundle_block
+    (bundle_block_keyword)
+    (bundle_block_type)
+    (bundle_block_name)
+    (bundle_block_body
+      (bundle_section
+      (promise_guard)
+      (promise
+        (promiser)
+        (attribute
+        (attribute_name)
+        (dollar_expression
+          (dollar_expression_operator)
+          (dollar_expression_start)
+          (dollar_expression_reference
+          (qualified_identifier))
+          (dollar_expression_end))))
+      (promise
+        (promiser)
+        (attribute
+        (attribute_name)
+        (call
+          (calling_identifier
+            (dollar_expression
+              (dollar_expression_operator)
+              (dollar_expression_start)
+              (dollar_expression_reference
+                (indexed_identifier
+                  (qualified_identifier)
+                  (index
+                    (identifier))))
+              (dollar_expression_end)))
+            (quoted_string))))
+        (promise
+          (promiser)
+          (attribute
+            (attribute_name)
+            (call
+                (calling_identifier
+                (dollar_expression
+                    (dollar_expression_operator)
+                    (dollar_expression_start)
+                    (dollar_expression_reference
+                    (indexed_identifier
+                        (qualified_identifier)
+                        (index
+                        (dollar_expression
+                            (dollar_expression_operator)
+                            (dollar_expression_start)
+                            (dollar_expression_reference
+                            (qualified_identifier))
+                            (dollar_expression_end)))))
+                    (dollar_expression_end)))
+                (quoted_string))))))))
