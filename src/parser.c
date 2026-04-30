@@ -3743,7 +3743,7 @@ TS_PUBLIC const TSLanguage *tree_sitter_cfengine(void) {
     .metadata = {
       .major_version = 1,
       .minor_version = 1,
-      .patch_version = 10,
+      .patch_version = 11,
     },
   };
   return &language;
