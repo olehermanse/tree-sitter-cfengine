@@ -926,6 +926,45 @@
         }
       ]
     },
+    "index": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "dollar_expression"
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "indexed_identifier": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "qualified_identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "index"
+        }
+      ]
+    },
     "quoted_string": {
       "type": "PATTERN",
       "value": "(\\'((\\\\(.|\\n))|[^'\\\\])*\\')|(\\\"((\\\\(.|\\n))|[^\"\\\\])*\\\")|(`[^`]*`)"
@@ -937,10 +976,6 @@
     "qualified_identifier": {
       "type": "PATTERN",
       "value": "([a-zA-Z0-9_]+\\:)?([a-zA-Z0-9_]+\\.)?[a-zA-Z0-9_]+"
-    },
-    "indexed_identifier": {
-      "type": "PATTERN",
-      "value": "(([a-zA-Z0-9_]+\\:)?([a-zA-Z0-9_]+\\.)?[a-zA-Z0-9_]+)(\\[([a-zA-Z0-9_]+\\:)?([a-zA-Z0-9_]+\\.)?[a-zA-Z0-9_]+\\])+"
     },
     "promise_guard": {
       "type": "PATTERN",
