@@ -10,7 +10,7 @@ const QUALIFIED_IDENTIFIER =
   /([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+/;
 const INDEX = /\[([a-zA-Z0-9_]+\:)?([a-zA-Z0-9_]+\.)?[a-zA-Z0-9_]+\]/;
 const INDEXED_IDENTIFIER = RegExp(
-  "(" + QUALIFIED_IDENTIFIER.source + ")(" + INDEX.source + ")+",
+  '(' + QUALIFIED_IDENTIFIER.source + ')(' + INDEX.source + ')+',
 );
 const PROMISE_GUARD = /[a-zA-Z_]+:/;
 const CLASS_EXPRESSION = /[.|&!()a-zA-Z0-9_:][\t .|&!()a-zA-Z0-9_:]*/;
@@ -18,17 +18,17 @@ const SQUOTE = /\'((\\(.|\n))|[^'\\])*\'/;
 const DQUOTE = /\"((\\(.|\n))|[^"\\])*\"/;
 const BQUOTE = /`[^`]*`/;
 const QUOTED_STRING = RegExp(
-  "(" + SQUOTE.source + ")|(" + DQUOTE.source + ")|(" + BQUOTE.source + ")",
+  '(' + SQUOTE.source + ')|(' + DQUOTE.source + ')|(' + BQUOTE.source + ')',
 );
 const CLASS_GUARD = RegExp(
-  "((" + QUOTED_STRING.source + ")|(" + CLASS_EXPRESSION.source + "))::",
+  '((' + QUOTED_STRING.source + ')|(' + CLASS_EXPRESSION.source + '))::',
 );
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
 module.exports = grammar({
-  name: "cfengine",
+  name: 'cfengine',
 
   extras: ($) => [$.comment, $.macro, /[\s]+/],
   word: ($) => $.identifier,
@@ -46,18 +46,18 @@ module.exports = grammar({
         optional($.parameter_list),
         $.body_block_body,
       ),
-    body_block_keyword: (_) => "body",
+    body_block_keyword: (_) => 'body',
     body_block_body: ($) =>
       seq(
-        "{",
+        '{',
         // 0 or more promises without a class guard:
         repeat($._body_attribute),
         // 0 or more class guards with 0 or more promises inside:
         repeat($.class_guarded_body_attributes),
-        "}",
+        '}',
       ),
 
-    _body_attribute: ($) => seq($.attribute, ";"),
+    _body_attribute: ($) => seq($.attribute, ';'),
 
     promise_block: ($) =>
       seq(
@@ -66,10 +66,10 @@ module.exports = grammar({
         alias($.identifier, $.promise_block_name),
         $.promise_block_body,
       ),
-    promise_block_keyword: (_) => "promise",
+    promise_block_keyword: (_) => 'promise',
     promise_block_body: ($) =>
       seq(
-        "{",
+        '{',
         // 0 or more promises without a class guard:
         repeat($._body_attribute),
         // 0 or more class guards with 0 or more promises inside:
@@ -79,7 +79,7 @@ module.exports = grammar({
             $.class_guarded_promise_block_attributes,
           ),
         ),
-        "}",
+        '}',
       ),
 
     class_guarded_body_attributes: ($) =>
@@ -93,22 +93,22 @@ module.exports = grammar({
         optional($.parameter_list),
         $.bundle_block_body,
       ),
-    bundle_block_keyword: (_) => "bundle",
+    bundle_block_keyword: (_) => 'bundle',
 
     parameter_list: ($) =>
       seq(
-        "(",
+        '(',
         optional(
           seq(
-            repeat(seq(alias($.identifier, $.parameter), ",")),
+            repeat(seq(alias($.identifier, $.parameter), ',')),
             alias($.identifier, $.parameter),
-            optional(","),
+            optional(','),
           ),
         ),
-        ")",
+        ')',
       ),
 
-    bundle_block_body: ($) => seq("{", repeat($.bundle_section), "}"),
+    bundle_block_body: ($) => seq('{', repeat($.bundle_section), '}'),
 
     bundle_section: ($) =>
       seq(
@@ -141,37 +141,37 @@ module.exports = grammar({
     dollar_expression: ($) =>
       choice(
         seq(
-          alias("$", $.dollar_expression_operator),
-          alias("(", $.dollar_expression_start),
+          alias('$', $.dollar_expression_operator),
+          alias('(', $.dollar_expression_start),
           choice(
             alias($._variable_reference, $.dollar_expression_reference),
             $.dollar_expression,
           ),
-          alias(")", $.dollar_expression_end),
+          alias(')', $.dollar_expression_end),
         ),
         seq(
-          alias("$", $.dollar_expression_operator),
-          alias("{", $.dollar_expression_start),
+          alias('$', $.dollar_expression_operator),
+          alias('{', $.dollar_expression_start),
           choice(
             alias($._variable_reference, $.dollar_expression_reference),
             $.dollar_expression,
           ),
-          alias("}", $.dollar_expression_end),
+          alias('}', $.dollar_expression_end),
         ),
       ),
     at_expression: ($) =>
       choice(
         seq(
-          alias("@", $.at_expression_operator),
-          alias("(", $.at_expression_start),
+          alias('@', $.at_expression_operator),
+          alias('(', $.at_expression_start),
           alias($._variable_reference, $.at_expression_reference),
-          alias(")", $.at_expression_end),
+          alias(')', $.at_expression_end),
         ),
         seq(
-          alias("@", $.at_expression_operator),
-          alias("{", $.at_expression_start),
+          alias('@', $.at_expression_operator),
+          alias('{', $.at_expression_start),
           alias($._variable_reference, $.at_expression_reference),
-          alias("}", $.at_expression_end),
+          alias('}', $.at_expression_end),
         ),
       ),
 
@@ -181,15 +181,15 @@ module.exports = grammar({
         $.dollar_expression, // TODO: This is only allowed for bundles / methods calls
         //       NOT for function or body calls
       ),
-    call: ($) => seq($.calling_identifier, "(", optional($._value_list), ")"),
+    call: ($) => seq($.calling_identifier, '(', optional($._value_list), ')'),
 
-    list: ($) => seq("{", optional($._value_list), "}"),
+    list: ($) => seq('{', optional($._value_list), '}'),
 
     // inner part of a non-empty list of values
     // such as the arguments of a function call
     // or the strings in an slist
     _value_list: ($) =>
-      seq($._right_value, repeat(seq(",", $._right_value)), optional(",")),
+      seq($._right_value, repeat(seq(',', $._right_value)), optional(',')),
 
     //
     _double_value: ($) => seq($._right_value, $._right_value),
@@ -201,11 +201,11 @@ module.exports = grammar({
     promise: ($) =>
       seq(
         alias($.quoted_string, $.promiser),
-        optional(seq("->", alias($._right_value, $.stakeholder))),
+        optional(seq('->', alias($._right_value, $.stakeholder))),
         optional($.attribute),
-        repeat(seq(",", $.attribute)),
-        optional(","),
-        ";",
+        repeat(seq(',', $.attribute)),
+        optional(','),
+        ';',
       ),
 
     // "Half promises" are not real, and shouldn't normally be allowed
@@ -214,10 +214,10 @@ module.exports = grammar({
     // when faced with macros.
     // TODO: resarch if there are better ways to handle macros
     half_promise: ($) =>
-      seq($.attribute, repeat(seq(",", $.attribute)), optional(","), ";"),
+      seq($.attribute, repeat(seq(',', $.attribute)), optional(','), ';'),
 
     attribute: ($) =>
-      seq(alias($.identifier, $.attribute_name), "=>", $._right_value),
+      seq(alias($.identifier, $.attribute_name), '=>', $._right_value),
 
     quoted_string: ($) => QUOTED_STRING,
     identifier: ($) => IDENTIFIER,
@@ -226,7 +226,7 @@ module.exports = grammar({
     promise_guard: ($) => PROMISE_GUARD,
     class_guard: ($) => CLASS_GUARD,
 
-    comment: ($) => token(seq("#", /.*/)),
+    comment: ($) => token(seq('#', /.*/)),
 
     macro: ($) => token(/@(if |else|endif)[^\n]*/),
   },
