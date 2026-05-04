@@ -225,7 +225,8 @@ module.exports = grammar({
     indexed_identifier: ($) =>
       seq(
         $.qualified_identifier,
-        $.index
+        $.index,
+        repeat($.index)
       ),
 
     quoted_string: ($) => QUOTED_STRING,

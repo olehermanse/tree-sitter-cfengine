@@ -962,6 +962,13 @@
         {
           "type": "SYMBOL",
           "name": "index"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "index"
+          }
         }
       ]
     },
